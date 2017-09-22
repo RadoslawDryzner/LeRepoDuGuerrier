@@ -1,2 +1,2 @@
 # LeRepoDuGuerrier
-Adaconda
+*Ada*conda
