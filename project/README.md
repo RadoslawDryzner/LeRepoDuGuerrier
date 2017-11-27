@@ -79,6 +79,10 @@ of the tracks with genres. (~30'000)
 
 ![Flow chart](pictures/pipeline.png)
 
+So far, for the second milestone, we only used the Million Song subset to test 
+our pipeline.
+This subset contains 10'000 songs, ~ 500 of which are in the genres' dataset and
+~ 250 for which we found lyrics.
 For more details about how we tackled these challenges, you can view the detailed 
 description in our notebook.
 
