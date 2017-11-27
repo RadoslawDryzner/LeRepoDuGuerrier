@@ -77,7 +77,7 @@ them from the genius.com website.
 After finding the lyrics from these three sources, we end up with about the half 
 of the tracks with genres. (~30'000) 
 
-![Flow chart](pictures/pipeline.svg)
+![Flow chart](pictures/pipeline.png)
 
 For more details about how we tackled these challenges, you can view the detailed 
 description in our notebook.
