@@ -61,22 +61,24 @@ For us, the only important fields are:
 
 Since we are interested in visualizing themes and words in different genres,
 we must find genre information about our tracks.
-Fortunatly, the same people that made the Million Song dataset also provide
+Fortunately, the same people that made the Million Song dataset also provide
 a dataset containing the genres of the tracks. This dataset however only 
 consists of 59'000 songs.
 We easily include the genre information, since the songs are assigned the 
 same id in both datasets.
-We dropthe songs that are not in the genres dataset.
+We drop the songs that are not in the genres' dataset.
 
 After extracting the fields of interest, and linking the genres, we use 
 the ``artist_name`` and ``title`` to find the corresponding lyrics.
-We used two additionnal datasets to find lyrics information of our tracks.
+We used two additional datasets to find lyrics information of our tracks.
 These datasets are Song Lyrics and MetroLyrics.
 If the lyrics are not found in either of them, we then use a webscrapper to retrieve
 them from the genius.com website.
 
 After finding the lyrics from these three sources, we end up with about the half 
 of the tracks with genres. (~30'000) 
+
+![Flow chart](pictures/pipeline.svg)
 
 For more details about how we tackled these challenges, you can view the detailed 
 description in our notebook.
