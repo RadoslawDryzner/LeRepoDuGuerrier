@@ -47,10 +47,9 @@ containing lyrics or genre information about songs?
 
 # Milestone 2
 
-
 The main dataset that we use is the Million Song dataset.
-There is a lot of different information for each song in this one.
-i.e. different audio information, about the artist, ranking on different websites etc…
+There is a lot of different information for each song in this one such as 
+different audio information, artists, ranking on different websites etc…
 
 For us, the only important fields are:
 
@@ -69,8 +68,8 @@ same id in both datasets.
 We drop the songs that are not in the genres' dataset.
 
 After extracting the fields of interest, and linking the genres, we use 
-the ``artist_name`` and ``title`` to find the corresponding lyrics.
-We used two additional datasets to find lyrics information of our tracks.
+the ``artist_name`` and ``title`` fields to find the corresponding lyrics.
+We used two additional datasets to find lyrics information for our tracks.
 These datasets are Song Lyrics and MetroLyrics.
 If the lyrics are not found in either of them, we then use a webscrapper to retrieve
 them from the genius.com website.
