@@ -82,7 +82,7 @@ of the tracks with genres. (~30'000)
 
 ![Flow chart](pictures/pipeline.png)
 
-So far, for the second milestone, we only used the first three files (A, B and C) to test 
+So far, for the second milestone, we only used the first three directories (A, B and C) to test 
 our pipeline.
 This subset contains 120'000 songs, ~ 7000 of which are in the genres' dataset and
 ~ 2800 for which we found lyrics.
