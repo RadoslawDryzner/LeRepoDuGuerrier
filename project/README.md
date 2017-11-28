@@ -89,6 +89,6 @@ This subset contains 120'000 songs, ~ 7000 of which are in the genres' dataset a
 For more details about how we tackled these challenges, you can view the detailed 
 description in our notebook.
 
-The notebook contains also a detailed plan of what we will do for the milestone 3
+The notebook (in the `project.ipynb` file) contains also a detailed plan of what we will do for the milestone 3
 and up the presentation.
 
