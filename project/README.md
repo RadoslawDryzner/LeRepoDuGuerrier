@@ -74,15 +74,18 @@ These datasets are Song Lyrics and MetroLyrics.
 If the lyrics are not found in either of them, we then use a webscrapper to retrieve
 them from the genius.com website.
 
+Then we add a new column in which we store the language of the lyrics, which
+is extracted using langdetect.
+
 After finding the lyrics from these three sources, we end up with about the half 
 of the tracks with genres. (~30'000) 
 
 ![Flow chart](pictures/pipeline.png)
 
-So far, for the second milestone, we only used the Million Song subset to test 
+So far, for the second milestone, we only used the first three files (A, B and C) to test 
 our pipeline.
-This subset contains 10'000 songs, ~ 500 of which are in the genres' dataset and
-~ 250 for which we found lyrics.
+This subset contains 120'000 songs, ~ 7000 of which are in the genres' dataset and
+~ 2800 for which we found lyrics.
 For more details about how we tackled these challenges, you can view the detailed 
 description in our notebook.
 
