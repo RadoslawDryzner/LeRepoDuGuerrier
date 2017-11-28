@@ -74,6 +74,9 @@ These datasets are Song Lyrics and MetroLyrics.
 If the lyrics are not found in either of them, we then use a webscrapper to retrieve
 them from the genius.com website.
 
+Then we add a new column in which we store the language of the lyrics, which
+is extracted using langdetect.
+
 After finding the lyrics from these three sources, we end up with about the half 
 of the tracks with genres. (~30'000) 
 
