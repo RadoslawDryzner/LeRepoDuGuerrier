@@ -9,8 +9,8 @@ const dummy = [
 const svg = d3.select("svg");
 
 const margin = 30;
-const canvasWidth = svg.node().clientWidth - 2 * margin;
-const canvasHeight = svg.node().clientHeight - 2 * margin;
+const canvasWidth = svg.node().getBoundingClientRect().width - 2 * margin;
+const canvasHeight = svg.node().getBoundingClientRect().height - 2 * margin;
 
 const g = svg.append("g")
 			 .attr("transform", "translate(" + margin + "," + margin + ")");
