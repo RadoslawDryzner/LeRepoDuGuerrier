@@ -1,11 +1,3 @@
-const dummy = [
-	{year: 1910, value: 0.4},
-	{year: 1911, value: 0.2},
-	{year: 1940, value: 0.6},
-	{year: 1990, value: 0.7},
-	{year: 2017, value: 0.8}
-]
-
 const svg = d3.select("svg");
 
 const margin = 30;
@@ -25,17 +17,20 @@ let scaleY = d3.scaleLinear()
 
 let line = d3.line()
     		 .x(function(d) { return scaleX(d.year); })
-    		 .y(function(d) { return scaleY(d.value); });
+    		 .y(function(d) { return scaleY(d.value); })
+    		 .curve(d3.curveMonotoneX);
 
-g.append("path")
- .datum(dummy)
- .attr("fill", "none")
- .attr("stroke", "black")
- .attr("d", line);
+d3.csv('testGenerate.php', data => {
+	g.append("path")
+	 .datum(data)
+	 .attr("fill", "none")
+	 .attr("stroke", "black")
+	 .attr("d", line);
 
-g.append("g")
- .attr("transform", "translate(0," + canvasHeight + ")")
- .call(d3.axisBottom(scaleX).tickFormat(d3.format("d")));
+	g.append("g")
+	 .attr("transform", "translate(0," + canvasHeight + ")")
+	 .call(d3.axisBottom(scaleX).tickFormat(d3.format("d")));
 
-g.append("g")
- .call(d3.axisLeft(scaleY));
+	g.append("g")
+	 .call(d3.axisLeft(scaleY));
+});
