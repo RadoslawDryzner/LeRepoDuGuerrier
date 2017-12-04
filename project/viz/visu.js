@@ -20,7 +20,7 @@ let line = d3.line()
     		 .y(function(d) { return scaleY(d.value); })
     		 .curve(d3.curveMonotoneX);
 
-d3.csv('testGenerate.php', data => {
+d3.csv('testReadFromDB.php', data => {
 	g.append("path")
 	 .datum(data)
 	 .attr("fill", "none")
