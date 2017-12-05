@@ -21,4 +21,42 @@ svg {
   margin: 0;
   position: fixed;
   background-color: #EEE;
+  overflow-y: auto;
+}
+
+#btn-add {
+  margin: 10px;
+}
+
+.panel-default {
+  padding: 10px;
+}
+
+.span-genre{
+  margin: 10px;
+}
+
+.span-word{
+  margin: 10px;
+}
+
+.label-no-data{
+  margin-left: 10px;
+  font-size: 15px;
+}
+
+.btn-remove {
+  float: right;
+}
+
+table{
+  width: 100%;
+}
+
+td{
+  display: inline-block
+}
+
+.full-width-td{
+  display: table-cell;
 }

@@ -2,12 +2,44 @@
 <head>
 	<meta charset="utf-8">
 	<title>Visualization</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link href="sheet.css" rel="stylesheet">
 </head>
 <body>
+	<div class="panel panel-default" id="curve-ui-template" style="display: none;">
+		<table><tr><td>
+		<div class="dropdown">
+			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Word  <span class="caret"></span></button>
+			<ul class="dropdown-menu">
+				<li><a href="#">Word</a></li>
+				<li><a href="#">Topic</a></li>
+				<li><a href="#">Sentiment</a></li>
+			</ul>
+		</div>
+		</td><td>
+		<span class="span-genre">  Genre :  </span>
+		</td><td>
+		<input type="text" class="form-control typeahead genre-typeahead" data-provide="typeahead">
+		</td><td>
+		<span class="span-word">  Word :  </span>
+		</td><td>
+		<input type="text" class="form-control typeahead word-typeahead" data-provide="typeahead">
+		</td><td>
+		<span class="label label-danger label-no-data"><span class="glyphicon glyphicon-ban-circle"></span>  No data</span>
+		</td><td class="full-width-td">
+		<button class="btn btn-danger btn-remove"><span class="glyphicon glyphicon-remove"></span> Remove this curve</button>
+		</td></tr></table>
+	</div>
 	<svg></svg>
-	<div id=ui></div>
+	<div id=ui class="panel-group">
+		<div id="curves-ui">
+		</div>
+		<button class="btn btn-success" id="btn-add"><span class="glyphicon glyphicon-plus"></span> Add data</button>
+	</div>
 	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="bootstrap3-typeahead.min.js"></script>
 	<script src="visu.js"></script>
 </body>
 </html>
