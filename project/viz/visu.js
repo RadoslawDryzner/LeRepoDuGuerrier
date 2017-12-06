@@ -45,6 +45,7 @@ function addCurve() {
 
 	const genreInput = clone.find(".genre-typeahead");
 	const wordInput = clone.find(".word-typeahead");
+	const topicInput = clone.find(".topic-typeahead");
 
 	const index = curves.length;
 
@@ -54,20 +55,30 @@ function addCurve() {
 			return;
 		curves[index].genre = this.value;
 
-		$.get("getAllWords.php?genre=" + this.value, function(data){
-			wordInput.typeahead('destroy')
-			wordInput.typeahead({source:data});
-		},'json');
+		if (curves[index].type === "word") {
+			updateWordTypeahead(index, this.value);
+		}
+		else if (curves[index].type === "topic") {
+			updateTopicTypeahead(index, this.value);
+		}
 
 		updateCurve(index);
 	});
 	wordInput.change(function(){
-		if (curves[index].genre == this.value) 
+		if (curves[index].type !== "word" || curves[index].word == this.value) 
 			return;
 
 		curves[index].word = this.value;
 		updateCurve(index);
 	});
+	topicInput.change(function(){
+		if (curves[index].type !== "topic" || curves[index].topic == this.value) 
+			return;
+
+		curves[index].topic = this.value;
+		updateCurve(index);
+	});
+
 
 	const removeButton = clone.find(".btn-remove");
 	removeButton.click(() => {
@@ -78,17 +89,85 @@ function addCurve() {
 		clone.attr("style", "display:none;");
 	});
 
+	clone.find(".li-word").click(() => {changeCurveType(index, "word");});
+	clone.find(".li-topic").click(() => {changeCurveType(index, "topic");});
+	clone.find(".li-sentiment").click(() => {changeCurveType(index, "sentiment");});
+
 	curves.push({
+		type: "word",
 		genre:"",
 		word: "",
+		topic: "",
+		dropdown: clone.find(".dropdown-text"),
+		wordSpan: clone.find(".span-word"),
+		wordInput: wordInput,
+		topicSpan: clone.find(".span-topic"),
+		topicInput: topicInput,
 		noDataLabel: clone.find(".label-no-data")
 	});
+
+	clone.find(".span-topic").attr("style", "display:none;");
+	topicInput.attr("style", "display:none;");
 
 	$("#curves-ui").append(clone);
 }
 
+function updateWordTypeahead(i, genre) {
+	$.get("getAllWords.php?genre=" + genre, function(data){
+		curves[i].wordInput.typeahead('destroy')
+		curves[i].wordInput.typeahead({source:data});
+	},'json');
+}
+
+function updateTopicTypeahead(i, genre) {
+	$.get("getAllTopics.php?genre=" + genre, function(data){
+		curves[i].topicInput.typeahead('destroy')
+		curves[i].topicInput.typeahead({source:data});
+	},'json');
+}
+
+function changeCurveType(i, type) {
+	curves[i].type = type;
+	curves[i].dropdown.html(type.charAt(0).toUpperCase() + type.slice(1));
+
+	if (type != "word") {
+		curves[i].wordSpan.attr("style", "display:none;");
+		curves[i].wordInput.attr("style", "display:none;");
+	}
+	else {
+		updateWordTypeahead(i, curves[i].genre);
+
+		curves[i].wordSpan.attr("style", null);
+		curves[i].wordInput.attr("style", null);
+	}
+
+	if (type != "topic") {
+		curves[i].topicSpan.attr("style", "display:none;");
+		curves[i].topicInput.attr("style", "display:none;");
+	}
+	else {
+		updateTopicTypeahead(i, curves[i].genre);
+
+		curves[i].topicSpan.attr("style", null);
+		curves[i].topicInput.attr("style", null);
+	}
+
+	updateCurve(i);
+}
+
 function updateCurve(i) {
-	d3.csv("getWordData.php?genre=" + curves[i].genre + "&word=" + curves[i].word, data => {
+	let fileName;
+	if (curves[i].type === "word") {
+		fileName = "getWordData.php?genre=" + curves[i].genre + "&word=" + curves[i].word;
+	}
+	else if (curves[i].type === "topic") {
+		fileName = "getTopicData.php?genre=" + curves[i].genre + "&topic=" + curves[i].topic;
+	}
+	else {
+		fileName = "getSentimentData.php?genre=" + curves[i].genre;
+	}
+
+	d3.csv(fileName, data => {
 		if (curves[i].path) {
 			curves[i].path.remove();
 			curves[i].path = null;
