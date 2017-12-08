@@ -32,7 +32,7 @@ g.append("g")
 
 
 let allGenres = [];
-$.get("getAllGenres.php", function(data){
+$.get("data/allGenres.json", function(data){
 	allGenres = data;
 },'json');
 
@@ -113,17 +113,25 @@ function addCurve() {
 }
 
 function updateWordTypeahead(i, genre) {
-	$.get("getAllWords.php?genre=" + genre, function(data){
-		curves[i].wordInput.typeahead('destroy')
-		curves[i].wordInput.typeahead({source:data});
-	},'json');
+	curves[i].wordInput.typeahead('destroy')
+
+	const filename = "data/words/" + genre + "/allWords.json";
+	checkFileExist(filename, () => {}, () => {
+		$.get(filename, data => {
+			curves[i].wordInput.typeahead({source:data});
+		},'json');
+	});
 }
 
 function updateTopicTypeahead(i, genre) {
-	$.get("getAllTopics.php?genre=" + genre, function(data){
-		curves[i].topicInput.typeahead('destroy')
-		curves[i].topicInput.typeahead({source:data});
-	},'json');
+	curves[i].topicInput.typeahead('destroy')
+
+	const filename = "data/topics/" + genre + "/allTopics.json";
+	checkFileExist(filename, () => {}, () => {
+		$.get(filename, data => {
+			curves[i].topicInput.typeahead({source:data});
+		},'json');
+	});
 }
 
 function changeCurveType(i, type) {
@@ -158,32 +166,44 @@ function changeCurveType(i, type) {
 function updateCurve(i) {
 	let fileName;
 	if (curves[i].type === "word") {
-		fileName = "getWordData.php?genre=" + curves[i].genre + "&word=" + curves[i].word;
+		fileName = "data/words/" + curves[i].genre + "/" + curves[i].word + ".csv";
 	}
 	else if (curves[i].type === "topic") {
-		fileName = "getTopicData.php?genre=" + curves[i].genre + "&topic=" + curves[i].topic;
+		fileName = "data/topics/" + curves[i].genre + "/" + curves[i].topic + ".csv";
 	}
 	else {
-		fileName = "getSentimentData.php?genre=" + curves[i].genre;
+		fileName = "data/sentiments/" + curves[i].genre + ".csv";
 	}
 
-	d3.csv(fileName, data => {
-		if (curves[i].path) {
-			curves[i].path.remove();
-			curves[i].path = null;
-		}
 
-		if (data.length > 0) {
-			curves[i].noDataLabel.attr("style", "display:none;");
+	if (curves[i].path) { //removes the old curve
+		curves[i].path.remove();
+		curves[i].path = null;
+	}
 
-			curves[i].path = g.append("path")
-			 .datum(data)
-			 .attr("fill", "none")
-			 .attr("stroke", "black")
-			 .attr("d", line);
+	checkFileExist(fileName, () => {
+		curves[i].noDataLabel.attr("style", null); //if file doesn't exist
+	}, () => {
+		d3.csv(fileName) //if file exists
+			.get(data => {
+				curves[i].noDataLabel.attr("style", "display:none;");
+
+				curves[i].path = g.append("path")
+				 .datum(data)
+				 .attr("fill", "none")
+				 .attr("stroke", "black")
+				 .attr("d", line);
+			});
+	});
+}
+
+function checkFileExist(filename, onError, onSuccess) {
+	$.get("fileExist.php?file=" + filename, exists => {
+		if(exists) {
+			onSuccess();
 		}
 		else {
-			curves[i].noDataLabel.attr("style", null);
+			onError();
 		}
-	});
+	}, 'json');
 }
