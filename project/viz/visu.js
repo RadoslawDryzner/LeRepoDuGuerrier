@@ -22,17 +22,8 @@ let line = d3.line()
     		 .y(function(d) { return scaleY(d.value); })
     		 .curve(d3.curveMonotoneX);
 
-g.append("g")
- .attr("transform", "translate(0," + canvasHeight + ")")
- .call(d3.axisBottom(scaleX).tickFormat(d3.format("d")));
-
-g.append("g")
- .call(d3.axisLeft(scaleY));
-
-
-
 let allGenres = [];
-$.get("getAllGenres.php", function(data){
+$.get("data/allGenres.json", function(data){
 	allGenres = data;
 },'json');
 
@@ -86,6 +77,8 @@ function addCurve() {
 			curves[index].path.remove();
 			curves[index].path = null;
 		}
+		curves[index].max = 0;
+		checkYScale();
 		clone.attr("style", "display:none;");
 	});
 
@@ -98,6 +91,7 @@ function addCurve() {
 		genre:"",
 		word: "",
 		topic: "",
+		max: 0,
 		dropdown: clone.find(".dropdown-text"),
 		wordSpan: clone.find(".span-word"),
 		wordInput: wordInput,
@@ -113,17 +107,25 @@ function addCurve() {
 }
 
 function updateWordTypeahead(i, genre) {
-	$.get("getAllWords.php?genre=" + genre, function(data){
-		curves[i].wordInput.typeahead('destroy')
-		curves[i].wordInput.typeahead({source:data});
-	},'json');
+	curves[i].wordInput.typeahead('destroy')
+
+	const filename = "data/words/" + genre + "/allWords.json";
+	checkFileExist(filename, () => {}, () => {
+		$.get(filename, data => {
+			curves[i].wordInput.typeahead({source:data});
+		},'json');
+	});
 }
 
 function updateTopicTypeahead(i, genre) {
-	$.get("getAllTopics.php?genre=" + genre, function(data){
-		curves[i].topicInput.typeahead('destroy')
-		curves[i].topicInput.typeahead({source:data});
-	},'json');
+	curves[i].topicInput.typeahead('destroy')
+
+	const filename = "data/topics/" + genre + "/allTopics.json";
+	checkFileExist(filename, () => {}, () => {
+		$.get(filename, data => {
+			curves[i].topicInput.typeahead({source:data});
+		},'json');
+	});
 }
 
 function changeCurveType(i, type) {
@@ -158,32 +160,115 @@ function changeCurveType(i, type) {
 function updateCurve(i) {
 	let fileName;
 	if (curves[i].type === "word") {
-		fileName = "getWordData.php?genre=" + curves[i].genre + "&word=" + curves[i].word;
+		fileName = "data/words/" + curves[i].genre + "/" + curves[i].word + ".csv";
 	}
 	else if (curves[i].type === "topic") {
-		fileName = "getTopicData.php?genre=" + curves[i].genre + "&topic=" + curves[i].topic;
+		fileName = "data/topics/" + curves[i].genre + "/" + curves[i].topic + ".csv";
 	}
 	else {
-		fileName = "getSentimentData.php?genre=" + curves[i].genre;
+		fileName = "data/sentiments/" + curves[i].genre + ".csv";
 	}
 
-	d3.csv(fileName, data => {
+	removePathIfAny(i);
+
+	checkFileExist(fileName, () => {
+		curves[i].noDataLabel.attr("style", null); //if file doesn't exist
+		curves[i].max = 0;
+		checkYScale();
+	}, () => {
+		d3.csv(fileName) //if file exists
+			.get(data => {
+				curves[i].data = data;
+				curves[i].max = Math.max(...data.map(d => d.value))
+
+				createCurve(i);
+				checkYScale();
+			});
+	});
+}
+
+function removePathIfAny(i) {
+	if (curves[i].path) { //removes the old curve
+		curves[i].path.remove();
+		curves[i].path = null;
+	}
+}
+
+function createCurve(i) {
+	curves[i].path = g.append("path")
+	 .datum(curves[i].data)
+	 .attr("fill", "none")
+	 .attr("stroke", "black")
+	 .attr("d", line);
+
+	curves[i].noDataLabel.attr("style", "display:none;");
+}
+
+function recreateAllCurves() {
+	for (let i in curves) {
 		if (curves[i].path) {
-			curves[i].path.remove();
-			curves[i].path = null;
+			removePathIfAny(i);
+			createCurve(i);
 		}
+	}
+}
 
-		if (data.length > 0) {
-			curves[i].noDataLabel.attr("style", "display:none;");
+function checkYScale() {
+	const currentMax = scaleY.domain()[1];
+	let newMax = Math.max(...curves.map(c => c.max));
 
-			curves[i].path = g.append("path")
-			 .datum(data)
-			 .attr("fill", "none")
-			 .attr("stroke", "black")
-			 .attr("d", line);
+	if (newMax === 0) {
+		newMax = 1;
+	}
+
+	if (newMax !== currentMax) {
+		scaleY.domain([0, newMax]);
+
+		d3.selectAll(".left-axis").remove();
+
+		g.append("g")
+		 .call(d3.axisLeft(scaleY))
+		 .attr("class", "left-axis");
+
+		recreateAllCurves();
+	}
+
+	return newMax !== currentMax;
+}
+
+function checkFileExist(filename, onError, onSuccess) {
+	$.get("fileExist.php?file=" + filename, exists => {
+		if(exists) {
+			onSuccess();
 		}
 		else {
-			curves[i].noDataLabel.attr("style", null);
+			onError();
 		}
-	});
+	}, 'json');
+}
+
+onResize();
+$(window).resize(onResize);
+
+function onResize() {
+	d3.selectAll(".bottom-axis").remove();
+	d3.selectAll(".left-axis").remove();
+
+	const canvasWidth = svg.node().getBoundingClientRect().width - 2 * margin;
+	const canvasHeight = svg.node().getBoundingClientRect().height - 2 * margin;
+
+	scaleX.rangeRound([0, canvasWidth]);
+
+	scaleY.rangeRound([canvasHeight, 0]);
+
+	g.append("g")
+	 .attr("transform", "translate(0," + canvasHeight + ")")
+	 .call(d3.axisBottom(scaleX).tickFormat(d3.format("d")))
+	 .attr("class", "bottom-axis");
+
+	g.append("g")
+	 .call(d3.axisLeft(scaleY))
+	 .attr("class", "left-axis");
+
+	recreateAllCurves();
 }
