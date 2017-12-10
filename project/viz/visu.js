@@ -22,15 +22,6 @@ let line = d3.line()
     		 .y(function(d) { return scaleY(d.value); })
     		 .curve(d3.curveMonotoneX);
 
-g.append("g")
- .attr("transform", "translate(0," + canvasHeight + ")")
- .call(d3.axisBottom(scaleX).tickFormat(d3.format("d")));
-
-g.append("g")
- .call(d3.axisLeft(scaleY));
-
-
-
 let allGenres = [];
 $.get("data/allGenres.json", function(data){
 	allGenres = data;
@@ -86,6 +77,8 @@ function addCurve() {
 			curves[index].path.remove();
 			curves[index].path = null;
 		}
+		curves[index].max = 0;
+		checkYScale();
 		clone.attr("style", "display:none;");
 	});
 
@@ -98,6 +91,7 @@ function addCurve() {
 		genre:"",
 		word: "",
 		topic: "",
+		max: 0,
 		dropdown: clone.find(".dropdown-text"),
 		wordSpan: clone.find(".span-word"),
 		wordInput: wordInput,
@@ -175,26 +169,71 @@ function updateCurve(i) {
 		fileName = "data/sentiments/" + curves[i].genre + ".csv";
 	}
 
+	removePathIfAny(i);
 
+	checkFileExist(fileName, () => {
+		curves[i].noDataLabel.attr("style", null); //if file doesn't exist
+		curves[i].max = 0;
+		checkYScale();
+	}, () => {
+		d3.csv(fileName) //if file exists
+			.get(data => {
+				curves[i].data = data;
+				curves[i].max = Math.max(...data.map(d => d.value))
+
+				createCurve(i);
+				checkYScale();
+			});
+	});
+}
+
+function removePathIfAny(i) {
 	if (curves[i].path) { //removes the old curve
 		curves[i].path.remove();
 		curves[i].path = null;
 	}
+}
 
-	checkFileExist(fileName, () => {
-		curves[i].noDataLabel.attr("style", null); //if file doesn't exist
-	}, () => {
-		d3.csv(fileName) //if file exists
-			.get(data => {
-				curves[i].noDataLabel.attr("style", "display:none;");
+function createCurve(i) {
+	curves[i].path = g.append("path")
+	 .datum(curves[i].data)
+	 .attr("fill", "none")
+	 .attr("stroke", "black")
+	 .attr("d", line);
 
-				curves[i].path = g.append("path")
-				 .datum(data)
-				 .attr("fill", "none")
-				 .attr("stroke", "black")
-				 .attr("d", line);
-			});
-	});
+	curves[i].noDataLabel.attr("style", "display:none;");
+}
+
+function recreateAllCurves() {
+	for (let i in curves) {
+		if (curves[i].path) {
+			removePathIfAny(i);
+			createCurve(i);
+		}
+	}
+}
+
+function checkYScale() {
+	const currentMax = scaleY.domain()[1];
+	let newMax = Math.max(...curves.map(c => c.max));
+
+	if (newMax === 0) {
+		newMax = 1;
+	}
+
+	if (newMax !== currentMax) {
+		scaleY.domain([0, newMax]);
+
+		d3.selectAll(".left-axis").remove();
+
+		g.append("g")
+		 .call(d3.axisLeft(scaleY))
+		 .attr("class", "left-axis");
+
+		recreateAllCurves();
+	}
+
+	return newMax !== currentMax;
 }
 
 function checkFileExist(filename, onError, onSuccess) {
@@ -206,4 +245,30 @@ function checkFileExist(filename, onError, onSuccess) {
 			onError();
 		}
 	}, 'json');
+}
+
+onResize();
+$(window).resize(onResize);
+
+function onResize() {
+	d3.selectAll(".bottom-axis").remove();
+	d3.selectAll(".left-axis").remove();
+
+	const canvasWidth = svg.node().getBoundingClientRect().width - 2 * margin;
+	const canvasHeight = svg.node().getBoundingClientRect().height - 2 * margin;
+
+	scaleX.rangeRound([0, canvasWidth]);
+
+	scaleY.rangeRound([canvasHeight, 0]);
+
+	g.append("g")
+	 .attr("transform", "translate(0," + canvasHeight + ")")
+	 .call(d3.axisBottom(scaleX).tickFormat(d3.format("d")))
+	 .attr("class", "bottom-axis");
+
+	g.append("g")
+	 .call(d3.axisLeft(scaleY))
+	 .attr("class", "left-axis");
+
+	recreateAllCurves();
 }
