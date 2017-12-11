@@ -64,3 +64,16 @@ td{
 .full-width-td{
   display: table-cell;
 }
+
+.tool-tip {
+  display: none;
+  position: absolute;
+  pointer-events: none;
+  background: lightsteelblue;
+  border: 1px solid black;
+  border-radius: 2px;
+}
+
+.displayed {
+  display: initial;
+}
