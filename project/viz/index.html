@@ -4,16 +4,17 @@
 	<title>Visualization</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link href="sheet.css" rel="stylesheet">
+	<link rel="icon" href="icon.ico">
 </head>
 <body>
 	<div class="panel panel-default" id="curve-ui-template" style="display: none;">
 		<table><tr><td>
 		<div class="dropdown">
-			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Word  <span class="caret"></span></button>
+			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="dropdown-text">Word</span>  <span class="caret"></span></button>
 			<ul class="dropdown-menu">
-				<li><a href="#">Word</a></li>
-				<li><a href="#">Topic</a></li>
-				<li><a href="#">Sentiment</a></li>
+				<li class="li-word"><a href="#">Word</a></li>
+				<li class="li-topic"><a href="#">Topic</a></li>
+				<li class="li-sentiment"><a href="#">Sentiment</a></li>
 			</ul>
 		</div>
 		</td><td>
@@ -24,6 +25,10 @@
 		<span class="span-word">  Word :  </span>
 		</td><td>
 		<input type="text" class="form-control typeahead word-typeahead" data-provide="typeahead">
+		</td><td>
+		<span class="span-topic">  Topic :  </span>
+		</td><td>
+		<input type="text" class="form-control typeahead topic-typeahead" data-provide="typeahead">
 		</td><td>
 		<span class="label label-danger label-no-data"><span class="glyphicon glyphicon-ban-circle"></span>  No data</span>
 		</td><td class="full-width-td">
