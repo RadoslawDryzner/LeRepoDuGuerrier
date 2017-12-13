@@ -120,7 +120,7 @@ function updateWordTypeahead(i, genre) {
 	curves[i].wordInput.typeahead('destroy')
 
 	const filename = "data/words/" + genre + "/allWords.json";
-	checkFileExist(filename, () => {}, () => {
+	checkFileExist(filename, () => {console.error("No word list for " + genre)}, () => {
 		$.get(filename, data => {
 			curves[i].wordInput.typeahead({source:data});
 		},'json');

@@ -1,0 +1,1101 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ini",
+				"initial"
+			],
+			[
+				"sele",
+				"select"
+			],
+			[
+				"bo",
+				"bottomAxisG"
+			],
+			[
+				"axis",
+				"axisBottom"
+			],
+			[
+				"tran",
+				"transition"
+			],
+			[
+				"selec",
+				"selectAll"
+			],
+			[
+				"cur",
+				"curves"
+			],
+			[
+				"sca",
+				"scaleY"
+			],
+			[
+				"max",
+				"maxData"
+			],
+			[
+				"b",
+				"bottom-axis"
+			],
+			[
+				"file",
+				"fileName"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"fil",
+				"fileName"
+			],
+			[
+				"fo",
+				"forEach"
+			],
+			[
+				"hom",
+				"Homonyms"
+			],
+			[
+				"an",
+				"antonym"
+			],
+			[
+				"setR",
+				"setRightPanelInfoWord"
+			],
+			[
+				"sel",
+				"selectLanguagePair"
+			],
+			[
+				"iso",
+				"iso1"
+			],
+			[
+				"remo",
+				"remove"
+			],
+			[
+				"tr",
+				"translateX"
+			],
+			[
+				"le",
+				"length"
+			],
+			[
+				"mi",
+				"minY"
+			],
+			[
+				"tra",
+				"translate"
+			],
+			[
+				"min",
+				"minX"
+			],
+			[
+				"for",
+				"forEach"
+			],
+			[
+				"add",
+				"addLanguageLines"
+			],
+			[
+				"lan",
+				"language"
+			],
+			[
+				"pa",
+				"pathID"
+			],
+			[
+				"visu",
+				"fullScreenVisu"
+			],
+			[
+				"updat",
+				"updateWordTypeahead"
+			],
+			[
+				"fun",
+				"fun\tFunction"
+			],
+			[
+				"cu",
+				"curves"
+			],
+			[
+				"topci",
+				"topicInput"
+			],
+			[
+				"topi",
+				"topicInput"
+			],
+			[
+				"over",
+				"overflow-y"
+			],
+			[
+				"can",
+				"canvasHeight"
+			],
+			[
+				"syn",
+				"synonym"
+			],
+			[
+				"auto",
+				"automobile"
+			],
+			[
+				"on",
+				"onclick"
+			],
+			[
+				"isc",
+				"isocode"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"ti",
+				"title\tTag"
+			],
+			[
+				"strok",
+				"strokeWidth"
+			],
+			[
+				"stroke",
+				"stroke-width"
+			],
+			[
+				"isoced",
+				"isocodes"
+			],
+			[
+				"isoc",
+				"isocode"
+			],
+			[
+				"pos",
+				"positionsGeo"
+			],
+			[
+				"line",
+				"lineGenerator"
+			],
+			[
+				"la",
+				"latitude"
+			],
+			[
+				"pro",
+				"projection"
+			],
+			[
+				"mes",
+				"mesh"
+			],
+			[
+				"target_",
+				"target_new_length"
+			],
+			[
+				"k",
+				"kmax"
+			],
+			[
+				"lapla",
+				"laplaceNormal"
+			],
+			[
+				"time",
+				"timestep"
+			],
+			[
+				"normal",
+				"normalize"
+			],
+			[
+				"poin",
+				"point_after"
+			],
+			[
+				"point_",
+				"point_before"
+			],
+			[
+				"cent",
+				"centerx"
+			],
+			[
+				"para",
+				"parameterValue"
+			],
+			[
+				"Vec",
+				"Vector3f"
+			],
+			[
+				"norm",
+				"normalized"
+			],
+			[
+				"re",
+				"return"
+			],
+			[
+				"new",
+				"new_accel"
+			],
+			[
+				"m_ac",
+				"m_accel_motion"
+			],
+			[
+				"m_a",
+				"m_accel_motion"
+			],
+			[
+				"SI",
+				"SIZE_X"
+			],
+			[
+				"MAX",
+				"MAX_Y"
+			],
+			[
+				"M",
+				"MIN_X"
+			],
+			[
+				"data",
+				"dataFile"
+			],
+			[
+				"MX",
+				"MAX_Y"
+			],
+			[
+				"MIN",
+				"MIN_Z"
+			],
+			[
+				"dat",
+				"dataFile"
+			],
+			[
+				"h",
+				"hit_normal"
+			],
+			[
+				"hit",
+				"hit_motion"
+			],
+			[
+				"its",
+				"its_motion"
+			],
+			[
+				"m_m",
+				"m_mesh_motion"
+			],
+			[
+				"next",
+				"nextPoint"
+			],
+			[
+				"nr",
+				"normalized"
+			],
+			[
+				"nom",
+				"normalized"
+			],
+			[
+				"nex",
+				"nextPoint"
+			],
+			[
+				"no",
+				"norm"
+			],
+			[
+				"un",
+				"Uniform_phase"
+			],
+			[
+				"ray",
+				"Ray3f"
+			],
+			[
+				"Un",
+				"Uniform_phase"
+			],
+			[
+				"bim",
+				"bitmap_count"
+			],
+			[
+				"fake",
+				"fake_size"
+			],
+			[
+				"fre",
+				"free_list_heads"
+			],
+			[
+				"old",
+				"old_bucket"
+			],
+			[
+				"ol",
+				"old_size"
+			],
+			[
+				"get",
+				"get_min_bucket"
+			],
+			[
+				"si",
+				"size_t"
+			],
+			[
+				"num",
+				"num_allocated"
+			],
+			[
+				"is_",
+				"is_valid_address"
+			],
+			[
+				"is_a",
+				"is_valid_address"
+			],
+			[
+				"is",
+				"is_address_set"
+			],
+			[
+				"pr",
+				"printf\tprintf …"
+			],
+			[
+				"unse",
+				"unset_valid_address"
+			],
+			[
+				"pre",
+				"previous_free"
+			],
+			[
+				"mem",
+				"memory_get_block_size"
+			],
+			[
+				"vl",
+				"value_t"
+			],
+			[
+				"memory_ge",
+				"memory_get_block_size"
+			],
+			[
+				"siz",
+				"Size"
+			],
+			[
+				"p",
+				"previous"
+			],
+			[
+				"tag",
+				"tag_None"
+			],
+			[
+				"a",
+				"address"
+			],
+			[
+				"CU",
+				"current_address"
+			],
+			[
+				"He",
+				"HEADER_SIZE"
+			],
+			[
+				"val",
+				"value_t"
+			],
+			[
+				"size",
+				"size_t"
+			],
+			[
+				"nor",
+				"normal_map"
+			],
+			[
+				"Nor",
+				"NoriObject"
+			],
+			[
+				"ET",
+				"ETexture"
+			],
+			[
+				"tre",
+				"treePrinter"
+			],
+			[
+				"els",
+				"elseC"
+			],
+			[
+				"the",
+				"thenC"
+			],
+			[
+				"pri",
+				"println"
+			],
+			[
+				"sa",
+				"sampler"
+			],
+			[
+				"with",
+				"withSubst"
+			],
+			[
+				"sub",
+				"substitution"
+			],
+			[
+				"L",
+				"LetL"
+			],
+			[
+				"cos",
+				"cosTheta"
+			],
+			[
+				"S",
+				"Substitution"
+			],
+			[
+				"transfor",
+				"transformed"
+			],
+			[
+				"free",
+				"freeVarsMap"
+			],
+			[
+				"en",
+				"endl"
+			],
+			[
+				"sam",
+				"sample2D"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "visu.js",
+			"settings":
+			{
+				"buffer_size": 7994,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 2136,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sheet.css",
+			"settings":
+			{
+				"buffer_size": 845,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/mesh_processing.h",
+		"/home/arnaud/Documents/EPFL/10/Project/qml-plugin/OLDcellulo-qml-plugin/DOCUMENTATION.md",
+		"/home/arnaud/Documents/EPFL/10/Project/cellulo-magnet-curling/android/assets/maps/kart2.json",
+		"/home/arnaud/Documents/EPFL/10/Project/cellulo-magnet-curling/android/assets/maps/basic.json",
+		"/home/arnaud/Documents/EPFL/10/DV/Etymap/less/app.less",
+		"/home/arnaud/Documents/EPFL/10/DV/Etymap/static/index.html",
+		"/home/arnaud/Documents/EPFL/10/DV/Etymap/src/app.js",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/visu.js",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/tempData/allGenres.csv",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/tempData/topics/pop/allTopics.json",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/tempData/words/rock/allWords.json",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/getAllTopics.php",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/fileExist.php",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/tempData/topics/pop/windows.csv",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/tempData/words/rock/kapoue.csv",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/tempData/words/pop/allWords.json",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/tempData/cringe.csv",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/index.html",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/sheet.css",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/getSentimentData.php",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/getTopicData.php",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/getWordData.php",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/getAllWords.php",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/getAllGenres.php",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/testReadFromDB.php",
+		"/home/arnaud/Documents/EPFL/10/Project/cellulo-magnet-curling/android/assets/maps/doc.json",
+		"/home/arnaud/Documents/EPFL/10/Project/cellulo-magnet-curling/android/assets/maps/kart.json",
+		"/home/arnaud/Documents/EPFL/10/Project/cellulo-magnet-curling/android/assets/translations/t1_fr.ts",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/isDataAvailable.php",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/test.json",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/testGenerate.php",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/editor.php",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/createAccount.php",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/connectServer.php",
+		"/home/arnaud/Documents/EPFL/10/Project/qml-plugin/OLDcellulo-qml-plugin/src/util/lang/TranslationTool.cpp",
+		"/home/arnaud/Documents/EPFL/10/Geom/Ex8/dgp2016-exercise8/implicit_fairing/mesh_processing.cpp",
+		"/home/arnaud/.cache/.fr-GalEHz/Exercise8-Group2/readme.txt",
+		"/home/arnaud/Qt5.7.0/5.7/gcc_64/bin/t1_fr.ts",
+		"/home/arnaud/Documents/EPFL/10/Project/qml-plugin/OLDcellulo-qml-plugin/samples/cellulo-localization-demo/README.md",
+		"/home/arnaud/Documents/EPFL/10/Project/cellulo-magnet-curling/android/assets/maps/testMap.json",
+		"/home/arnaud/Documents/EPFL/10/Geom/Ex9/dgp2016-exercise9/implicit_fairing/mesh_processing.cpp",
+		"/home/arnaud/Documents/EPFL/10/Geom/Ex9/dgp2016-exercise9-solution/implicit_fairing/mesh_processing.cpp",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/viz/visu.html",
+		"/home/arnaud/Documents/EPFL/10/Project/qml-plugin/OLDcellulo-qml-plugin/src/zones/CelluloZonePolygon.cpp",
+		"/home/arnaud/Desktop/drawing.svg",
+		"/home/arnaud/Documents/EPFL/10/DV/Etymap/data/relations.csv",
+		"/home/arnaud/Documents/EPFL/10/Geom/groups.txt",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/README.md",
+		"/home/arnaud/Documents/EPFL/10/Project/qml-plugin/OLDcellulo-qml-plugin/src/zones/CelluloZonePaintedItem.cpp",
+		"/home/arnaud/Documents/EPFL/10/Project/qml-plugin/OLDcellulo-qml-plugin/src/zones/CelluloZonePaintedItem.h",
+		"/home/arnaud/Documents/EPFL/app.js",
+		"/home/arnaud/Documents/EPFL/10/Geom/Ex8/dgp2016-exercise8/implicit_fairing/mesh_processing.h",
+		"/home/arnaud/Documents/EPFL/10/Geom/Ex8/dgp2016-exercise8-solution/implicit_fairing/mesh_processing.cpp",
+		"/home/arnaud/Documents/EPFL/10/Project/cellulo-magnet-curling/android/assets/maps/zigzag.json",
+		"/home/arnaud/Documents/EPFL/10/DV/Etymap/data/languages_coordinates.csv",
+		"/home/arnaud/Documents/EPFL/10/Project/cellulo-magnet-curling/assets/zigzag.svg",
+		"/home/arnaud/Documents/EPFL/10/Project/qml-plugin/OLDcellulo-qml-plugin/src/util/lang/TranslationTool.h",
+		"/home/arnaud/Documents/EPFL/10/Project/qml-plugin/OLDcellulo-qml-plugin/src/zones/CelluloZoneEngine.cpp",
+		"/home/arnaud/Documents/EPFL/10/DV/Etymap/src/world.geo.js",
+		"/home/arnaud/Documents/EPFL/10/DV/Etymap/map/world.geo.json",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/Homework03/topojson/ch-cantons.topojson.json",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/Homework03/topojson/ch-cantons.geojson.json",
+		"/home/arnaud/Documents/EPFL/10/DV/Etymap/src/neighborhoods.js",
+		"/home/arnaud/Documents/EPFL/10/DV/Etymap/Gruntfile.js",
+		"/home/arnaud/Documents/EPFL/10/DV/Etymap/package.json",
+		"/home/arnaud/Documents/EPFL/10/DV/Etymap/build/app.js",
+		"/home/arnaud/Documents/EPFL/10/DV/Etymap/server/app.py",
+		"/home/arnaud/Documents/EPFL/10/Project/cellulo-magnet-curling/android/assets/maps/empty.json",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/MillionSongSubset/msd_genre_dataset.txt",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/hdf5_getters.py",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/MillionSongSubset/AdditionalFiles/msd_genre_dataset.txt",
+		"/home/arnaud/.cache/.fr-cDqUZy/msd_genre_dataset.txt",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/MillionSongSubset/data/A/F/B/TRAFBDA128F14592A9.h5",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/project/MillionSongSubset/data/B/E/F/TRBEFAS128F4262569.h5",
+		"/home/arnaud/Downloads/boxplot_demo (1).py",
+		"/home/arnaud/Downloads/Telegram Desktop/7thFleet_map.svg",
+		"/home/arnaud/Documents/EPFL/10/Geom/Ex6/dgp2016-exercise6/remeshing/mesh_processing.h",
+		"/home/arnaud/Documents/EPFL/10/Geom/Ex6/dgp2016-exercise6/remeshing/mesh_processing.cpp",
+		"/home/arnaud/Documents/EPFL/10/Project/qml-plugin/cellulo-qml-plugin/DOCUMENTATION.md",
+		"/home/arnaud/Documents/EPFL/10/Geom/Ex6/dgp2016-exercise6/remeshing/mesh_processing (copy).cpp",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/Homework04/lalonde.csv",
+		"/home/arnaud/.cache/.fr-jDFvQf/Exercise6-Group4/mesh_processing.cpp",
+		"/home/arnaud/.cache/.fr-uUvr9r/mesh_processing.cpp",
+		"/home/arnaud/.cache/.fr-FodFYS/Exercise6-Group4/mesh_processing.cpp",
+		"/home/arnaud/.cache/.fr-2mZFzW/Exercise6-Group4/mesh_processing.cpp",
+		"/home/arnaud/.cache/.fr-SS8ovR/remeshing/mesh_processing.cpp",
+		"/home/arnaud/.cache/.fr-JnQxli/mesh_processing.cpp",
+		"/home/arnaud/.cache/.fr-RxfLNs/Exercise6-Group4/mesh_processing.cpp",
+		"/home/arnaud/.cache/.fr-s7W0hN/mesh_processing.cpp",
+		"/home/arnaud/.cache/.fr-qPPJch/mesh_processing.cpp",
+		"/home/arnaud/Documents/EPFL/10/Project/cellulo-magnet-curling/maps/testMap.json",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/Homework03/icon_ch/script.sh",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/Homework03/map_eu.ipynb",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/Homework03/eu_flags/script.sh",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/Homework03/position_canton_mapping.json",
+		"/home/arnaud/Documents/EPFL/10/Geom/Ex5/dgp2017-exercise5/dgp2017-exercise5/smoothing/mesh_processing.h",
+		"/home/arnaud/Documents/EPFL/10/Geom/Ex5/dgp2017-exercise5/dgp2017-exercise5/externals/surface_mesh/surface_mesh/Surface_mesh.h",
+		"/home/arnaud/Documents/EPFL/10/Geom/Ex5/dgp2017-exercise5/dgp2017-exercise5/smoothing/mesh_processing (copy).cpp",
+		"/home/arnaud/Documents/EPFL/10/Geom/Ex5/dgp2017-exercise5/dgp2017-exercise5/smoothing/mesh_processing.cpp",
+		"/home/arnaud/.cache/.fr-RRs8P1/Exercise5-group9/mesh_processing.cpp",
+		"/home/arnaud/.cache/.fr-uT7iO8/Exercise5-Group7/mesh_processing.cpp",
+		"/home/arnaud/.cache/.fr-EmZqfy/mesh_processing.cpp",
+		"/home/arnaud/.cache/.fr-eDQJfG/mesh_processing.cpp",
+		"/home/arnaud/.cache/.fr-exwhUE/Exercise5-Group7/mesh_processing.cpp",
+		"/home/arnaud/.cache/.fr-mZzdQP/mesh_processing.cpp",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/Homework03/tsdec450.tsv",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/Homework03/topojson/europe.topojson.json",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/Homework03/test.html",
+		"/home/arnaud/Documents/EPFL/10/ADA/LeRepoDuGuerrier/Homework03/position_mapping.json",
+		"/home/arnaud/Documents/EPFL/10/Geom/Ex4/dgp2017-exercise4/dgp2017-exercise4/curvature/viewer.cpp",
+		"/home/arnaud/Documents/EPFL/10/Geom/Ex4/dgp2017-exercise4/dgp2017-exercise4/curvature/given_viewer.cpp",
+		"/home/arnaud/Documents/EPFL/7/Geometrie/geometry/Exercise3/surfaces/surfaces.cpp",
+		"/home/arnaud/Documents/EPFL/7/Geometrie/geometry/Exercise4/curvature/viewer.cpp",
+		"/home/arnaud/.cache/.fr-18CTBh/viewer.cpp",
+		"/home/arnaud/.cache/.fr-G0T3wM/Exercise-4/curvature/viewer.cpp",
+		"/home/arnaud/.cache/.fr-Vy7nkM/Exercise-4/curvature/viewer.cpp",
+		"/home/arnaud/.cache/.fr-wlABWG/Exercise4_Group11/viewer.cpp",
+		"/home/arnaud/.cache/.fr-50wjBJ/viewer.cpp",
+		"/home/arnaud/.cache/.fr-UxtcIz/Exercise4-Group4/viewer.cpp",
+		"/home/arnaud/.cache/.fr-KLIEQo/viewer.cpp",
+		"/home/arnaud/.cache/.fr-k74udv/Exercise4-Group7/viewer.cpp",
+		"/home/arnaud/.cache/.fr-Q4RuJk/viewer.cpp",
+		"/home/arnaud/.cache/.fr-MwrtnN/viewer.cpp",
+		"/home/arnaud/.cache/.fr-cPgGGZ/viewer.cpp",
+		"/home/arnaud/.cache/.fr-DsDeqd/Exercise4-Group2/viewer.cpp",
+		"/home/arnaud/.cache/.fr-67kQl7/viewer.cpp",
+		"/home/arnaud/.cache/.fr-OFevmS/Exercise4-Group2/viewer.cpp",
+		"/home/arnaud/.cache/.fr-mTFMX9/viewer.cpp"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"/home/arnaud/Documents/EPFL/10/Geom/Ex4/dgp2017-exercise4/dgp2017-exercise4/",
+			"/home/arnaud/Documents/EPFL/10/Geom/Ex4/dgp2017-exercise4/dgp2017-exercise4/externals/surface_mesh/surface_mesh",
+			"/home/arnaud/Documents/EPFL/8/ACG/nori/include/nori",
+			"/home/arnaud/Documents/EPFL/8/ACG/nori/src",
+			"/home/arnaud/Downloads/mitsuba-af602c6fd98a",
+			"",
+			"/home/arnaud/Documents/EPFL/8/ACG/nori/include/nori",
+			"/home/arnaud/Documents/EPFL/8/ACG/nori/src",
+			"",
+			"/home/arnaud/Documents/EPFL/8/ACG/nori/include/nori,/home/arnaud/Documents/EPFL/8/ACG/nori/src",
+			"/home/arnaud/Documents/EPFL/8/ACG/nori/include/nori",
+			"",
+			"/home/arnaud/Documents/EPFL/8/ACG/Ex5/scenes",
+			"/home/arnaud/Documents/EPFL/8/ACG/nori/src",
+			"/home/arnaud/Documents/EPFL/8/ACG/nori/include/nori",
+			"/home/arnaud/Documents/EPFL/8/ACG/nori/src",
+			"/home/arnaud/Documents/EPFL/8/ACG/nori/include/nori",
+			"/home/arnaud/Documents/EPFL/8/ACG/nori/src",
+			"/home/arnaud/Documents/EPFL/8/ACG/nori/include/nori",
+			"/home/arnaud/Documents/EPFL/8/ACC/acc2017-group20/compiler/src/l3",
+			"/home/arnaud/Documents/EPFL/8/ACC/acc2017-group20/examples",
+			"/home/arnaud/Documents/EPFL/8/ACG/nori/include/nori",
+			"/home/arnaud/Documents/EPFL/8/ACC/acc2017-group20/compiler/test/l3/test",
+			"/home/arnaud/Documents/EPFL/8/ACC/acc2017-group20/compiler/src/l3",
+			"/home/arnaud/Documents/EPFL/8/ACC/acc2017-group20/compiler/test/l3/test",
+			"/home/arnaud/Documents/EPFL/8/ACC/acc2017-group20/compiler/src/l3",
+			"/home/arnaud/Documents/EPFL/8/ACC/acc2017-group20/compiler/test/l3/test",
+			"/home/arnaud/Documents/EPFL/8/ACC/acc2017-group20/compiler/src/l3",
+			"/home/arnaud/nori",
+			"/home/arnaud/Documents/EPFL/8/ACG/nori/include/nori",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"checkY",
+			"filter",
+			"selectWo",
+			"addLine",
+			"width",
+			";\");\n",
+			".span-genre{\n  margin: 10px;\n}",
+			"type",
+			" type=\"unfinished\"",
+			"unfinished",
+			"addLine",
+			"v:weight",
+			"Intersect",
+			"cout",
+			"emit",
+			">\n",
+			"Robin",
+			"kidna",
+			"russian",
+			"Arabic",
+			"']);\n",
+			"isKi",
+			"clear",
+			"Italian",
+			"English",
+			";",
+			";;",
+			"terms",
+			"hot",
+			"get_song_",
+			"openFile",
+			")",
+			"QVector2D(",
+			"Engine",
+			"id=\"path3049",
+			"cout",
+			"valenceDeviance",
+			"calc_mean_curvature",
+			"cout",
+			"calc_mean_curvature",
+			"calc_gauss_curvature",
+			"auto&",
+			"!mesh_.is_boundary(v0)",
+			"!mesh_.is_boundary(v0) && mesh_.is_boundary(v1)",
+			"lbda",
+			"ZH",
+			"COMBINED_STEP",
+			"mesh",
+			"implicit_smoothing",
+			"timestep",
+			"v:weight",
+			"area_inv",
+			"calc_edges_weights",
+			"auto&",
+			" p",
+			" b",
+			" i",
+			"OUT",
+			"Out",
+			"\"NAME\"",
+			"CelluloLocalRelayClient",
+			"cellulorobotpoold",
+			"CelluloBluetooth",
+			"cellulorobotpoold",
+			"CelluloLocalRelayClient",
+			"cellulorobotpoold",
+			"CelluloRelayClient",
+			"pool",
+			"normaliz",
+			"/ no",
+			"calc_face_normals",
+			"f:face_normal",
+			"\"v:point\"",
+			"v:point",
+			"vpoints",
+			"lb",
+			"++fv_c;",
+			"0.3333f",
+			"const Point& P = mesh.position(*fv_c);  ++fv_c;",
+			"auto&",
+			"mesh",
+			"UniformScale",
+			"cout",
+			"laplacianSmoothing",
+			"New",
+			"Chal",
+			"POS",
+			"Mont",
+			"Mon",
+			"Ho",
+			"Me",
+			"Heidelberg",
+			"O",
+			"Tokyo",
+			"Normale",
+			"Paris",
+			"NaN",
+			"Nan",
+			"anno",
+			"]]);\n",
+			"keysTouched",
+			"CelluloRelayClient",
+			"CelluloLocalRelayClient",
+			"isActive",
+			"Signals",
+			"signals",
+			"poseChanged",
+			"CelluloZoneLineSegmentDistance",
+			"SVGV",
+			"VisualEffectDirection",
+			"position",
+			"setVisualEffect",
+			"velocity",
+			"changes",
+			"gestureChanged",
+			"gesture",
+			"Gesture",
+			"gesture",
+			"LocomotionInteractivityMode",
+			"A CHANGER",
+			"Beckmann",
+			"Square",
+			"sigmaT",
+			"createInstance",
+			"sampleAttenuatedEmitterDirect",
+			"DirectSamplingRecord",
+			"miWeight",
+			"UV"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			",",
+			"",
+			"open_file",
+			"]",
+			"[",
+			"auto",
+			"mesh_",
+			"auto",
+			"",
+			"auto",
+			"mesh_",
+			"σt",
+			"σ_{t}",
+			"requested_size",
+			"medium_albedo",
+			"size",
+			"current_address",
+			"real_heap_start",
+			"m_ks",
+			"samplePosition",
+			"triangle_original_vertices",
+			"new_mesh."
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "visu.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 7994,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6036,
+								6036
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 2745.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2136,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1796,
+								1796
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "sheet.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 845,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								804,
+								804
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 270.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 21.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "viz.sublime-project",
+	"replace":
+	{
+		"height": 38.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

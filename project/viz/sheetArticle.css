@@ -3,25 +3,43 @@ html, body {
   height: 100%;
   padding: 0;
   margin: 0;
+  background-color: #7986AC
 }
 
 svg {
   width: 100%;
-  height: 80%;
+  height: 500px;
   padding: 0;
   margin: 0;
-  position: fixed;
+}
+
+#full-container {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  margin-left: 20%;
+  margin-right: 20%;
+  border-radius: 5px;
+  width: 60%;
+  background-color: white;
+  text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 #ui {
   width: 100%;
-  height: 20%;
+  height: 200px;
   top: 80%;
   padding: 0;
   margin: 0;
-  position: fixed;
   background-color: #EEE;
   overflow-y: auto;
+}
+
+p {
+  font-size: 17px;
 }
 
 #btn-add {
