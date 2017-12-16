@@ -2,12 +2,17 @@ let curves = [];
 
 const svg = d3.select("svg");
 
-const margin = 30;
+const margin = 40;
 const canvasWidth = svg.node().getBoundingClientRect().width - 2 * margin;
 const canvasHeight = svg.node().getBoundingClientRect().height - 2 * margin;
 
 const g = svg.append("g")
 			 .attr("transform", "translate(" + margin + "," + margin + ")");
+
+const leftAxisG = g.append("g");
+
+const bottomAxisG = g.append("g")
+	 .attr("transform", "translate(0," + canvasHeight + ")")
 
 let scaleX = d3.scaleLinear()
 			   .rangeRound([0, canvasWidth])
@@ -27,12 +32,16 @@ $.get("data/allGenres.json", function(data){
 	allGenres = data;
 },'json');
 
+const colors = ['#66c2a5','#fc8d62','#8da0cb','#e78ac3','#a6d854'];
+
 $("#btn-add").click(addCurve);
 
 function addCurve() {
 	let clone = $($("#curve-ui-template").clone()[0]);
 	clone.attr("id", null);
-	clone.attr("style", null);
+
+	const color = colors[curves.length%colors.length];
+	clone.attr("style", "background-color:" + color + ";");
 
 	const genreInput = clone.find(".genre-typeahead");
 	const wordInput = clone.find(".word-typeahead");
@@ -78,7 +87,7 @@ function addCurve() {
 			curves[index].path = null;
 		}
 		curves[index].max = 0;
-		checkYScale();
+		checkScales();
 		clone.attr("style", "display:none;");
 	});
 
@@ -92,6 +101,7 @@ function addCurve() {
 		word: "",
 		topic: "",
 		max: 0,
+		color: color,
 		dropdown: clone.find(".dropdown-text"),
 		wordSpan: clone.find(".span-word"),
 		wordInput: wordInput,
@@ -110,7 +120,7 @@ function updateWordTypeahead(i, genre) {
 	curves[i].wordInput.typeahead('destroy')
 
 	const filename = "data/words/" + genre + "/allWords.json";
-	checkFileExist(filename, () => {}, () => {
+	checkFileExist(filename, () => {console.error("No word list for " + genre)}, () => {
 		$.get(filename, data => {
 			curves[i].wordInput.typeahead({source:data});
 		},'json');
@@ -174,15 +184,17 @@ function updateCurve(i) {
 	checkFileExist(fileName, () => {
 		curves[i].noDataLabel.attr("style", null); //if file doesn't exist
 		curves[i].max = 0;
-		checkYScale();
+		checkScales();
 	}, () => {
 		d3.csv(fileName) //if file exists
 			.get(data => {
 				curves[i].data = data;
 				curves[i].max = Math.max(...data.map(d => d.value))
+				curves[i].startYear = data[0].year;
+				curves[i].endYear = data[data.length-1].year;
 
 				createCurve(i);
-				checkYScale();
+				checkScales();
 			});
 	});
 }
@@ -198,8 +210,34 @@ function createCurve(i) {
 	curves[i].path = g.append("path")
 	 .datum(curves[i].data)
 	 .attr("fill", "none")
-	 .attr("stroke", "black")
-	 .attr("d", line);
+	 .attr("stroke", curves[i].color)
+	 .attr("stroke-width", 7)
+	 .attr("d", line)
+	 .attr("class", "curve")
+	 .on("mouseover", () => {
+	 	curves[i].path.transition()
+	 	 .duration(300)
+	 	 .attr("stroke-width", 10)
+	 })
+	 .on("mouseout", () => {
+	 	curves[i].path.transition()
+	 	 .duration(300)
+	 	 .attr("stroke-width", 7)
+	 });
+
+	let title = "";
+	if (curves[i].type === "word") {
+		title = curves[i].genre + " / " + curves[i].word;
+	}
+	else if (curves[i].type === "topic") {
+		title = curves[i].genre + " / " + curves[i].topic;
+	}
+	else {
+		title = curves[i].genre + " sentiments";
+	}
+
+    curves[i].path.append("svg:title")
+      .text(title);
 
 	curves[i].noDataLabel.attr("style", "display:none;");
 }
@@ -213,27 +251,47 @@ function recreateAllCurves() {
 	}
 }
 
-function checkYScale() {
-	const currentMax = scaleY.domain()[1];
-	let newMax = Math.max(...curves.map(c => c.max));
+function checkScales() {
+	const currentMinX = scaleX.domain()[0];
+	let newMinX = Math.min(...curves.filter(c => c.path).map(c => c.startYear));
 
-	if (newMax === 0) {
-		newMax = 1;
+	const currentMaxX = scaleX.domain()[1];
+	let newMaxX = Math.max(...curves.filter(c => c.path).map(c => c.endYear));
+
+	if (newMinX >= newMaxX) {
+		newMinX = 1900;
+		newMaxX = 2020;
 	}
 
-	if (newMax !== currentMax) {
-		scaleY.domain([0, newMax]);
+	const currentMaxY = scaleY.domain()[1];
+	let newMaxY = Math.max(...curves.filter(c => c.path).map(c => c.max));
 
-		d3.selectAll(".left-axis").remove();
+	if (newMaxY <= 0) {
+		newMaxY = 1;
+	}
 
-		g.append("g")
-		 .call(d3.axisLeft(scaleY))
-		 .attr("class", "left-axis");
-
+	if (currentMinX !== newMinX || currentMaxX !== newMaxX || newMaxY !== currentMaxY) {
 		recreateAllCurves();
+
+		scaleX.domain([newMinX, newMaxX]);
+		scaleY.domain([0, newMaxY]);
+
+		bottomAxisG.transition()
+            .duration(1000)
+            .call(d3.axisBottom(scaleX).tickFormat(d3.format("d")));
+
+		leftAxisG.transition()
+            .duration(1000)
+            .call(d3.axisLeft(scaleY));
+
+        d3.selectAll(".curve").transition()
+        	.duration(1000)
+        	.attr("d", line);
+
+        return true;
 	}
 
-	return newMax !== currentMax;
+	return false;
 }
 
 function checkFileExist(filename, onError, onSuccess) {
@@ -251,9 +309,6 @@ onResize();
 $(window).resize(onResize);
 
 function onResize() {
-	d3.selectAll(".bottom-axis").remove();
-	d3.selectAll(".left-axis").remove();
-
 	const canvasWidth = svg.node().getBoundingClientRect().width - 2 * margin;
 	const canvasHeight = svg.node().getBoundingClientRect().height - 2 * margin;
 
@@ -261,12 +316,12 @@ function onResize() {
 
 	scaleY.rangeRound([canvasHeight, 0]);
 
-	g.append("g")
+	bottomAxisG
 	 .attr("transform", "translate(0," + canvasHeight + ")")
 	 .call(d3.axisBottom(scaleX).tickFormat(d3.format("d")))
 	 .attr("class", "bottom-axis");
 
-	g.append("g")
+	leftAxisG
 	 .call(d3.axisLeft(scaleY))
 	 .attr("class", "left-axis");
 

@@ -1,0 +1,77 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Visualization</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="sheetArticle.css" rel="stylesheet">
+	<link rel="icon" href="icon.ico">
+</head>
+<body>
+	<div id="full-container">
+		<h1> Dear lyrics, what are you hiding ?</h1>
+		</br>
+		<h3>19th December 2017</h3>
+		</br>
+		<h3>By Samuel P. Rey, Radosław P. Dryzner, and Arnaud V.J. Delamare</h3>
+		</br>
+		<p>Music is something we all enjoy across all cultures of the world. We all have many ideas about what kind of lyrics or phrases are often used in each genre, but in this project we look into the details of lyrics of many songs to find and vizualize interesting insights about them.</p>
+		</br>
+		<p>Usually, people associate pop songs to light, and happy themes such as love, and metal songs to darker themes, about death. With this project, you will be able to see if this is true !</p>
+		</br>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin elementum congue odio ut mattis. Sed auctor vitae elit eget pulvinar. Quisque eu lectus convallis, volutpat lectus vel, consequat magna. Quisque augue tortor, aliquam non nulla ut, scelerisque gravida justo. Integer sit amet ornare erat, in congue elit. Duis orci risus, imperdiet vel orci a, auctor blandit libero. Pellentesque id neque id risus tincidunt mattis a in nulla. Pellentesque nec placerat enim. Phasellus sodales lorem leo, sed hendrerit magna tempor eget. Nunc in faucibus lectus. Suspendisse faucibus tellus non purus suscipit iaculis. Praesent quis laoreet nisi. Duis lobortis faucibus nisi, sit amet tincidunt lectus malesuada quis. Praesent non lacus sed erat venenatis faucibus. Donec at arcu vel diam luctus blandit.
+
+Fusce urna purus, placerat in ex blandit, porta suscipit libero. Curabitur ut blandit tortor, condimentum pharetra tortor. Curabitur quam ipsum, laoreet sit amet fermentum sit amet, mattis nec turpis. Praesent semper nunc ante, at sollicitudin turpis blandit eget. Cras laoreet imperdiet purus, placerat euismod lorem dapibus vel. Vivamus quis libero finibus, condimentum lorem et, fermentum tellus. Maecenas porttitor commodo felis vitae tincidunt. Donec imperdiet lacus vitae libero elementum accumsan. Pellentesque sollicitudin risus tortor, id mattis elit dignissim sit amet. Ut a mauris molestie, facilisis lacus eu, tincidunt dolor. Etiam non augue at augue dictum mattis vel auctor odio. Sed fringilla viverra consectetur.
+
+Nullam faucibus lectus sed velit rutrum dignissim. Mauris congue neque non dui blandit suscipit. Sed lobortis viverra rutrum. Vestibulum lobortis mauris egestas, congue massa id, maximus enim. Sed egestas, lectus non dictum fermentum, dolor eros euismod lorem, interdum commodo massa est vel ante. Morbi vel egestas arcu. Curabitur iaculis libero sed hendrerit varius. Mauris ut augue maximus, blandit lorem sit amet, hendrerit urna. Nullam vel urna ut nisl blandit volutpat eget sed lorem. Donec sed justo ac erat iaculis tincidunt. Nunc consectetur metus quis augue convallis, sit amet dignissim nulla ultricies. Nunc cursus dui sit amet euismod fringilla. Pellentesque facilisis tortor ac gravida congue.
+
+Phasellus dignissim metus sed est tristique, non porttitor justo feugiat. Mauris egestas et ante dictum interdum. Donec faucibus mollis euismod. Integer consectetur metus at odio tincidunt, in laoreet arcu luctus. Sed vehicula, sapien ac mollis ullamcorper, lorem lacus mollis tortor, non malesuada elit lacus eleifend odio. Sed suscipit enim turpis. Nullam sit amet sem et odio mattis interdum. Mauris et sem laoreet, luctus libero vitae, tempor enim. Cras tincidunt erat a urna feugiat, quis condimentum sapien rhoncus. Nulla facilisi.
+
+Ut sed tristique magna. Aliquam euismod molestie augue, ut rhoncus ante commodo ut. Praesent consectetur diam nec velit vehicula dapibus. Integer finibus congue ex, ut hendrerit libero volutpat vel. Cras euismod mattis risus, finibus rutrum nisi consectetur a. Ut euismod nibh ut felis fringilla, ac maximus sem tristique. Aliquam rutrum tortor tellus. Nunc id rhoncus est. Praesent ultricies libero ac molestie pulvinar. Fusce eget ante sed nulla pharetra porttitor vel sit amet arcu. Cras sollicitudin pharetra porta. Duis quis justo molestie, lacinia dui eget, ultricies ex. Vestibulum vel tellus quis urna luctus rutrum. Ut velit nisl, tincidunt in molestie sed, luctus non ligula.</p>
+		</br>
+		<p> In the following visualization, you will be able to see trends in the words, topics and sentiments through time for the different genres : </p>
+		<svg></svg>
+		<div id=ui class="panel-group">
+			<div id="curves-ui">
+			</div>
+			<button class="btn btn-success" id="btn-add"><span class="glyphicon glyphicon-plus"></span> Add data</button>
+		</div>
+		</br>
+		<p>With this tool, you are able to select the word or topic you want, provided it is stored in our database, and compare its trend with any other word or topic.</p>
+	</div>
+
+	<div class="panel panel-default" id="curve-ui-template" style="display: none;">
+		<table><tr><td>
+		<div class="dropdown">
+			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="dropdown-text">Word</span>  <span class="caret"></span></button>
+			<ul class="dropdown-menu">
+				<li class="li-word"><a>Word</a></li>
+				<li class="li-topic"><a>Topic</a></li>
+				<li class="li-sentiment"><a>Sentiment</a></li>
+			</ul>
+		</div>
+		</td><td>
+		<span class="span-genre">  Genre :  </span>
+		</td><td>
+		<input type="text" class="form-control typeahead genre-typeahead" data-provide="typeahead">
+		</td><td>
+		<span class="span-word">  Word :  </span>
+		</td><td>
+		<input type="text" class="form-control typeahead word-typeahead" data-provide="typeahead">
+		</td><td>
+		<span class="span-topic">  Topic :  </span>
+		</td><td>
+		<input type="text" class="form-control typeahead topic-typeahead" data-provide="typeahead">
+		</td><td>
+		<span class="label label-danger label-no-data"><span class="glyphicon glyphicon-ban-circle"></span>  No data</span>
+		</td><td class="full-width-td">
+		<button class="btn btn-danger btn-remove"><span class="glyphicon glyphicon-remove"></span> Remove</button>
+		</td></tr></table>
+	</div>
+	
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="bootstrap3-typeahead.min.js"></script>
+	<script src="visu.js"></script>
+</body>
+</html>
