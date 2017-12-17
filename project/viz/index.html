@@ -29,7 +29,7 @@
 		</br>
 		<p>The genre of each song can be difficult to obtain as it depends on the definition of each genre, the perception of the listener and even on year of the song. Think about rock for instance : what was called <a href="https://www.youtube.com/watch?v=ZFo8-JqzSCM">rock in the 50's</a> is very different than what we call rock today. These difficulties, and the fact that the automatic tagging of a song is very difficult, explain why the <a href="https://labrosa.ee.columbia.edu/millionsong/blog/11-2-28-deriving-genre-dataset">Million Song Genre Dataset</a> only has 59 000 songs referenced in it.</p>
 		</br>
-		<p>For the lyrics, the Million Song Dataset also has a <a href="https://labrosa.ee.columbia.edu/millionsong/musixmatch">specific dataset</a> which provides a Bag Of Words(BOW) for each song. However, for later analysis of the lyrics, a BOW is not enough and we must have the full lyrics. Thus we must get our hands dirty and get the lyrics ourselves ! We first found two other datasets which contain lyrics for some songs in our dataset, but not nearly all of them. We thus decided to parse <a href="https://genius.com/">Genius</a>, a website which provides lyrics for thousands of songs EXPLIQUER PARSER.</p>
+		<p>For the lyrics, the Million Song Dataset also has a <a href="https://labrosa.ee.columbia.edu/millionsong/musixmatch">specific dataset</a> which provides a Bag Of Words (BOW) for each song. A BOW only provides a counter for each word in the text, indicating how many times this word is found in this particular text, therefore it does not provide any order for the words. However, for later analysis of the lyrics, a BOW is not enough and we must have the full lyrics. Thus we must get our hands dirty and get the lyrics ourselves ! We first found two other datasets which contain lyrics for some songs in our dataset, but not nearly all of them. We thus decided to parse <a href="https://genius.com/">Genius</a>, a website which provides lyrics for thousands of songs EXPLIQUER PARSER. With this method, we managed to get the lyrics for half of our songs, that is 30 000 lyrics.</p>
 		<i>To the Genius team : if you saw a spike of the traffic from Switzerland in the past few days, it was us ;)</i>
 		</br>
 		</br>
@@ -39,9 +39,21 @@
 		</br>
 		<p>We process the lyrics from three axes : 
 			</br>-Sentiment Analysis
+			</br>-Word Analysis
 			</br>-Topic Analysis
-			</br>-Word Analysis</p>
+			</p>
 		</br>
+		<p>For all of these steps, we will use Natural Language Processing (NLP) methods, which enable us to automatically extract from the lyrics many features. However, the first step before using these NLP methods is to get the language of each song. We then got our first dilemma : should we keep songs that are not in English ? The problem with keeping non-English lyrics is that it will decrease the quality of our NLP methods, as we will explain on the part about Topic Analysis. We could also process them separately from the English lyrics, but there are only a few songs that are not in English (less than 10%), so the results would not have been reliable. Thus we chose the least bad solution, which is to discard the non-English songs.</p>
+		</br>
+		<p>Now that we decided on what to do with these non-English songs, as there is no 'language' field in the dataset, we have to detect the language based on the lyrics. For this part, we used the well-named <a href="https://pypi.python.org/pypi/langdetect?">langdetect</a> library, which uses character N-grams (which are sequences of 1, 2, 3 or more letters), to determine the language of a text. For instance the 3-gram 'ght' is far more present in English than in French, but the inverse is true for the 3-gram 'eau'.</p>
+		</br>
+		<p>As that we now have only English songs we can start the real processing, the first being the sentiment analysis !</p>
+		</br>
+		<p>The base for sentiment analysis in any text is supervised learning : you need to have a sample of texts, labelled with a number indicating its sentiment, a lower number is a negative sentiment and a higher one is a positive sentiment. Then, with this sample and labels, you can train a classifier, using any supervised learning technique, and then use this classifier to give a sentiment score to every text you want. Luckily for us <a href="http://textblob.readthedocs.io/en/dev/">TextBlob</a>, a famous python NLP library offers both the classifier and the data to train it. After the classifier has been trained, we can simply feed it each lyric, and it will output its polarity (i.e positivity).</p>
+		</br>
+		<p>The next task is word analysis, which is the easiest of the three.</p>
+		</br>
+		<p>The goal of this analysis is to get a Bag Of Words (BOW) for each lyric. One can think that this task is trivial, as it only constits of splitting the lyrics by spaces, and getting the words, but it's more complicated. The first step for this task is the tokenization of the lyrics, that is transforming them in a list of words. This is performed once again with TextBlob. The next step is the removal of the stop words. "What is a stop word ?", you might ask : a stop word is a common word, which doesn't give very useful information, such as "I", "the", "that", ... Even if these words can sometimes be useful, they are not for our purpose : we do not care about how often the word "the" is present in pop songs. Finally, the last step is the lemmatization. This consists of mapping each word to its "root" (also called "lemma"). For instance, the word "went" will be mapped to "go" and the word "elephants" will be mapped to "elephant".</p>
 		<h3>Our results</h3>
 		</br>
 		<p> In the following visualization, you will be able to see trends in the words, topics and sentiments through time for the different genres : </p>
