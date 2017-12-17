@@ -53,6 +53,7 @@ function addCurve() {
 	genreInput.change(function() {
 		if (curves[index].genre == this.value) 
 			return;
+
 		curves[index].genre = this.value;
 
 		if (curves[index].type === "word") {
@@ -64,6 +65,7 @@ function addCurve() {
 
 		updateCurve(index);
 	});
+
 	wordInput.change(function(){
 		if (curves[index].type !== "word" || curves[index].word == this.value) 
 			return;
@@ -122,6 +124,7 @@ function updateWordTypeahead(i, genre) {
 	const filename = "data/words/" + genre + "/allWords.json";
 	checkFileExist(filename, () => {console.error("No word list for " + genre)}, () => {
 		$.get(filename, data => {
+			curves[i].wordInput.typeahead('destroy')
 			curves[i].wordInput.typeahead({source:data});
 		},'json');
 	});
@@ -133,6 +136,7 @@ function updateTopicTypeahead(i, genre) {
 	const filename = "data/topics/" + genre + "/allTopics.json";
 	checkFileExist(filename, () => {}, () => {
 		$.get(filename, data => {
+			curves[i].wordInput.typeahead('destroy')
 			curves[i].topicInput.typeahead({source:data});
 		},'json');
 	});

@@ -3,18 +3,66 @@
 	<meta charset="utf-8">
 	<title>Visualization</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link href="sheet.css" rel="stylesheet">
+	<link href="sheetArticle.css" rel="stylesheet">
 	<link rel="icon" href="icon.ico">
 </head>
 <body>
+	<div id="full-container">
+		<h1> Dear lyrics, what are you hiding ?</h1>
+		</br>
+		<h3>19th December 2017</h3>
+		</br>
+		<h3>By Samuel P. Rey, Radosław P. Dryzner, and Arnaud V.J. Delamare</h3>
+		</br>
+		<p>Music is something we all enjoy across all cultures of the world. We all have many ideas about what kind of lyrics or phrases are often used in each genre, but in this project we look into the details of lyrics of many songs to find and vizualize interesting insights about them.</p>
+		</br>
+		<p>Usually, people associate pop songs to light, and happy themes such as love, and metal songs to darker themes, about death. With this project, you will be able to see if this is true !</p>
+		</br>
+		<h3>Our method and data</h3>
+		<h4>Getting the data</h4>
+		</br>
+		</br>
+		<p>TODO : add samples, describe processing, add interesting results</p>
+		</br>
+		</br>
+		<p>The first thing to work with songs is, well, a list of songs ! We used the <a href="https://labrosa.ee.columbia.edu/millionsong/">Million Song Dataset</a>, which, as its name implies, contains the data "for a million contemporary popular music tracks". This dataset contains many useful information about each song, such as its popularity, its rythm, and many more features related to audio. As we only focus on the lyrics, and not the music, we use it to get the song name, the artist name and the year. But we are still missing two very important fields for our project : the genre of the song, and its lyrics, which are not in this dataset.</p>
+		</br>
+		<p>The genre of each song can be difficult to obtain as it depends on the definition of each genre, the perception of the listener and even on year of the song. Think about rock for instance : what was called <a href="https://www.youtube.com/watch?v=ZFo8-JqzSCM">rock in the 50's</a> is very different than what we call rock today. These difficulties, and the fact that the automatic tagging of a song is very difficult, explain why the <a href="https://labrosa.ee.columbia.edu/millionsong/blog/11-2-28-deriving-genre-dataset">Million Song Genre Dataset</a> only has 59 000 songs referenced in it.</p>
+		</br>
+		<p>For the lyrics, the Million Song Dataset also has a <a href="https://labrosa.ee.columbia.edu/millionsong/musixmatch">specific dataset</a> which provides a Bag Of Words(BOW) for each song. However, for later analysis of the lyrics, a BOW is not enough and we must have the full lyrics. Thus we must get our hands dirty and get the lyrics ourselves ! We first found two other datasets which contain lyrics for some songs in our dataset, but not nearly all of them. We thus decided to parse <a href="https://genius.com/">Genius</a>, a website which provides lyrics for thousands of songs EXPLIQUER PARSER.</p>
+		<i>To the Genius team : if you saw a spike of the traffic from Switzerland in the past few days, it was us ;)</i>
+		</br>
+		</br>
+		<h4>Processing the data</h4>
+		</br>
+		<p>Now that we have the lyrics and the genre for each song, we can start the processing the lyrics !</p>
+		</br>
+		<p>We process the lyrics from three axes : 
+			</br>-Sentiment Analysis
+			</br>-Topic Analysis
+			</br>-Word Analysis</p>
+		</br>
+		<h3>Our results</h3>
+		</br>
+		<p> In the following visualization, you will be able to see trends in the words, topics and sentiments through time for the different genres : </p>
+		<svg></svg>
+		<div id=ui class="panel-group">
+			<div id="curves-ui">
+			</div>
+			<button class="btn btn-success" id="btn-add"><span class="glyphicon glyphicon-plus"></span> Add data</button>
+		</div>
+		</br>
+		<p>With this tool, you are able to select the word or topic you want, provided it is stored in our database, and compare its trend with any other word or topic.</p>
+	</div>
+
 	<div class="panel panel-default" id="curve-ui-template" style="display: none;">
 		<table><tr><td>
 		<div class="dropdown">
 			<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="dropdown-text">Word</span>  <span class="caret"></span></button>
 			<ul class="dropdown-menu">
-				<li class="li-word"><a href="#">Word</a></li>
-				<li class="li-topic"><a href="#">Topic</a></li>
-				<li class="li-sentiment"><a href="#">Sentiment</a></li>
+				<li class="li-word"><a>Word</a></li>
+				<li class="li-topic"><a>Topic</a></li>
+				<li class="li-sentiment"><a>Sentiment</a></li>
 			</ul>
 		</div>
 		</td><td>
@@ -35,13 +83,7 @@
 		<button class="btn btn-danger btn-remove"><span class="glyphicon glyphicon-remove"></span> Remove</button>
 		</td></tr></table>
 	</div>
-	<svg></svg>
-	<div id=ui class="panel-group">
-		<div id="curves-ui">
-		</div>
-		<button class="btn btn-success" id="btn-add"><span class="glyphicon glyphicon-plus"></span> Add data</button>
-	</div>
-	<div class="tool-tip">Hello</div>
+	
 	<script src="https://d3js.org/d3.v4.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
