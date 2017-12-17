@@ -43,6 +43,11 @@ p {
   text-align: left;
 }
 
+ul, li {
+  font-size: 17px;
+  text-align: left;
+}
+
 #btn-add {
   margin: 10px;
 }
