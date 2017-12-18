@@ -94,3 +94,7 @@ description in our notebook.
 The notebook (in the `project.ipynb` file) contains also a detailed plan of what we will do for the milestone 3
 and up the presentation.
 
+### Workload repartition
+Arnaud Delamare: Initial descriptive data analysis, genre information collection, lyrics dataset collection and genius url generation, initial natural language processing on lyrics, mallet topic detection, visualisation, parts of data story.
+Radoslaw Dryzner: initial data collection, running the pipeline on part of data, scrapper for genius, parts of readme, finalising natural language processing, aggregation, final data generation, parts of data story.
+Samuel Rey: parts of readme, topic analysis, generating topics data, parts of data story.
