@@ -1,6 +1,29 @@
+let topics = [
+	'other',
+	'break-up',
+	'friendship',
+	'music',
+	'nature',
+	'feeling',
+	'AA vernacular',
+	'time',
+	'love',
+	'daily life',
+	'life/death',
+	'religion',
+	'affection',
+	'transport',
+	'weather',
+	'gangsta',
+	'slang',
+	'dance',
+	'dream',
+	'loneliness'
+];
+
 let curves = [];
 
-const svg = d3.select("svg");
+const svg = d3.select("#viz-svg");
 
 const margin = 40;
 const canvasWidth = svg.node().getBoundingClientRect().width - 2 * margin;

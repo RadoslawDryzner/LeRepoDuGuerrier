@@ -48,6 +48,10 @@ ul, li {
   text-align: left;
 }
 
+img {
+  width: 100%;
+}
+
 #btn-add {
   margin: 10px;
 }

@@ -22,14 +22,14 @@
 		<h4>Getting the data</h4>
 		</br>
 		</br>
-		<p>TODO : add samples, describe processing, add interesting results, add pipeline</p>
+		<p>TODO : add samples, better describe processing, add interesting results</p>
 		</br>
 		</br>
-		<p>The first thing to work with songs is, well, a list of songs ! We used the <a href="https://labrosa.ee.columbia.edu/millionsong/">Million Song Dataset</a>, which, as its name implies, contains the data "for a million contemporary popular music tracks". This dataset contains many useful information about each song, such as its popularity, its rythm, and many more features related to audio. As we only focus on the lyrics, and not the music, we use it to get the song name, the artist name and the year. But we are still missing two very important fields for our project : the genre of the song, and its lyrics, which are not in this dataset.</p>
+		<p>The first thing to work with songs is, well, a list of songs ! We used the <a href="https://labrosa.ee.columbia.edu/millionsong/">Million Song Dataset</a> (MSD), which, as its name implies, contains the data "for a million contemporary popular music tracks". This dataset contains many useful information about each song, such as its popularity, its rythm, and many more features related to audio. As we only focus on the lyrics, and not the music, we use it to get the song name, the artist name and the year. But we are still missing two very important fields for our project : the genre of the song, and its lyrics, which are not in this dataset.</p>
 		</br>
-		<p>The genre of each song can be difficult to obtain as it depends on the definition of each genre, the perception of the listener and even on year of the song. Think about rock for instance : what was called <a href="https://www.youtube.com/watch?v=ZFo8-JqzSCM">rock in the 50's</a> is very different than what we call rock today. These difficulties, and the fact that the automatic tagging of a song is very difficult, explain why the <a href="https://labrosa.ee.columbia.edu/millionsong/blog/11-2-28-deriving-genre-dataset">Million Song Genre Dataset</a> only has 59 000 songs referenced in it.</p>
+		<p>The genre of each song can be difficult to obtain as it depends on the definition of each genre, the perception of the listener and even on year of the song. Think about rock for instance : what was called <a href="https://www.youtube.com/watch?v=ZFo8-JqzSCM">rock in the 50's</a> is very different than what we call rock today. These problems, and the fact that the automatic tagging of a song is very difficult, explain why the <a href="https://labrosa.ee.columbia.edu/millionsong/blog/11-2-28-deriving-genre-dataset">Million Song Genre Dataset</a> only has 57.000 songs referenced in it.</p>
 		</br>
-		<p>For the lyrics, the Million Song Dataset also has a <a href="https://labrosa.ee.columbia.edu/millionsong/musixmatch">specific dataset</a> which provides a Bag Of Words (BOW) for each song. A BOW only provides a counter for each word in the text, indicating how many times this word is found in this particular text, therefore it does not provide any order for the words. However, for later analysis of the lyrics, a BOW is not enough and we must have the full lyrics. Thus we must get our hands dirty and get the lyrics ourselves ! We first found two other datasets which contain lyrics for some songs in our dataset, but not nearly all of them. We thus decided to parse <a href="https://genius.com/">Genius</a>, a website which provides lyrics for thousands of songs EXPLIQUER PARSER. With this method, we managed to get the lyrics for half of our songs, that is 30 000 lyrics.</p>
+		<p>For the lyrics, the Million Song Dataset also has a <a href="https://labrosa.ee.columbia.edu/millionsong/musixmatch">specific dataset</a> which provides a Bag Of Words (BOW) for each song. A BOW only provides a counter for each word in the text, indicating how many times this word is found in this particular text, therefore it does not provide any order for the words. However, for later analysis of the lyrics, a BOW is not enough and we must have the full lyrics. Thus we must get our hands dirty and get the lyrics ourselves ! We first found two other datasets which contain lyrics for some songs in our dataset, but not nearly all of them. We thus decided to parse <a href="https://genius.com/">Genius</a>, a website which provides lyrics for thousands of songs EXPLIQUER PARSER. With this method, we managed to get the lyrics for half of our songs, that is 22.000 lyrics.</p>
 		<i>To the Genius team : if you saw a spike of the traffic from Switzerland in the past few days, it was us ;)</i>
 		</br>
 		</br>
@@ -74,8 +74,15 @@
 		<p>We used <a href="https://www.scipy.org/">SciPy</a> to train and use our LDA model, EXPLIQUER BAD RESULTS + METTRE EXEMPLE</p>
 		</br>
 		<p><i style="text-align: left;">Second try :</i></p>
-		<p>While coping with the deception about our LDA model, we looked for another method that could provide us with topics for our lyrics. After some searching we stumbled upon <a href="http://mallet.cs.umass.edu/">MALLET</a> (MAchine Learning for LanguagE Toolkit), which is a Java package that provides many tools for NLP, and topic modeling. The first 'difficulty' of using it is that, contrary to SciPy, MALLET is not a python library, thus we first had to output each lyrics to a different file, which will be processed by MALLET. As before, we removed the stop words and the first names of the lyrics to get more accurate topics, but there is an important difference between LDA and MALLET's topic modeling : MALLET is not using a BOW, and keeps the sequence of words. This is why we must have the full lyrics and not simply use the BOW provided by the Million Songs Dataset. Running MALLET on our preprocessed lyrics outputs, as in the LDA model, the decomposition, of each song between each topics.</p>
+		<p>While coping with the deception about our LDA model, we looked for another method that could provide us with topics for our lyrics. After some searching we stumbled upon <a href="http://mallet.cs.umass.edu/">MALLET</a> (MAchine Learning for LanguagE Toolkit), which is a Java package that provides many tools for NLP, and topic modeling. The first 'difficulty' of using it is that, contrary to SciPy, MALLET is not a python library, thus we first had to output each lyrics to a different file, which will be processed by MALLET. As before, we removed the stop words and the first names of the lyrics to get more accurate topics, but there is an important difference between LDA and MALLET's topic modeling : MALLET is not using a BOW, and keeps the sequence of words. This is why we must have the full lyrics and not simply use the BOW provided by the Million Song Dataset. Running MALLET on our preprocessed lyrics, as in the LDA model, outputs the decomposition, of each song between each topics.</p>
 		<p>This time we got much better results, and meaningful topics METTRE EXEMPLE</p>
+
+		<table>
+			<tr>
+				<td>Other</td>
+				<td></td>
+			</tr>
+		</table>
 
 
 
@@ -106,10 +113,25 @@
 
 		</br>
 		</br>
+		<h4>Final pipeline</h4>
+		</br>
+		<p>Our pipeline can be seen below : </p> 
+		</br>
+		<div class="mxgraph" style="border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;zoom&quot;:2,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile userAgent=\&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.91 Safari/537.36\&quot; version=\&quot;7.8.6\&quot; editor=\&quot;www.draw.io\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;0f7a5766-fae5-5fe8-e982-401f255f3d96\&quot; name=\&quot;Page-1\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+		<script type="text/javascript" src="https://www.draw.io/js/viewer.min.js"></script>
+
+		</br>
+		</br>
 		<h3>Our results</h3>
 		</br>
+		<p>In the following part, we will show you some results from our data.</p>
+		</br>
+		<img src="images/death-metalVSfolk.png"></img>
+		<i>Frequency of the word 'death' in <span style="color:#66c2a5">Folk</span> and in <span style="color:#fc8d62">Metal</span></i> </br>
+		</br>
+		<p>We can see here, with no surprise, that the word 'death' is more present is Metal songs than in Folk songs.</p>
 		<p> In the following visualization, you will be able to see trends in the words, topics and sentiments through time for the different genres : </p>
-		<svg></svg>
+		<svg id="viz-svg"></svg>
 		<div id=ui class="panel-group">
 			<div id="curves-ui">
 			</div>
@@ -121,6 +143,10 @@
 		</br>
 		</br>
 		<h3>What could be improved</h3>
+		</br>
+		<p>Even if we have a fully working pipeline there is still room for improvement.</p>
+		</br>
+		<p>The main issue we currently have is that there's simply not enough songs ! We started with 1.000.000 with the Million Song Dataset, which is more than enough, but by simply adding the genre with the MSD Genre dataset, this number drops to 57.000. Then, even if our method to get the lyrics works well, sometimes, the lyrics for a given song simply are not available on the web or on any dataset. We could have gotten more lyrics by using the MSD's Musixmatch dataset, but as we previously stated, this would have greatly reduced the quality of the topic modeling. Finally, we further reduced the number of songs to only keep the ones in English, which leaves us with 20.000 songs in the end.</p>
 	</div>
 
 	<div class="panel panel-default" id="curve-ui-template" style="display: none;">
