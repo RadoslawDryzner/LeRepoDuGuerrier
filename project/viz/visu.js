@@ -1,4 +1,4 @@
-let topics = [
+const topics = [
 	'other',
 	'break-up',
 	'friendship',
@@ -51,7 +51,7 @@ let line = d3.line()
     		 .curve(d3.curveMonotoneX);
 
 let allGenres = [];
-$.get("data/allGenres.json", function(data){
+$.get("data3/allGenres.json", function(data){
 	allGenres = data;
 },'json');
 
@@ -82,9 +82,6 @@ function addCurve() {
 		if (curves[index].type === "word") {
 			updateWordTypeahead(index, this.value);
 		}
-		else if (curves[index].type === "topic") {
-			updateTopicTypeahead(index, this.value);
-		}
 
 		updateCurve(index);
 	});
@@ -96,6 +93,8 @@ function addCurve() {
 		curves[index].word = this.value;
 		updateCurve(index);
 	});
+
+	topicInput.typeahead({source:topics});
 	topicInput.change(function(){
 		if (curves[index].type !== "topic" || curves[index].topic == this.value) 
 			return;
@@ -144,23 +143,11 @@ function addCurve() {
 function updateWordTypeahead(i, genre) {
 	curves[i].wordInput.typeahead('destroy')
 
-	const filename = "data/words/" + genre + "/allWords.json";
+	const filename = "data3/words/" + genre + "/allWords.json";
 	checkFileExist(filename, () => {console.error("No word list for " + genre)}, () => {
 		$.get(filename, data => {
 			curves[i].wordInput.typeahead('destroy')
 			curves[i].wordInput.typeahead({source:data});
-		},'json');
-	});
-}
-
-function updateTopicTypeahead(i, genre) {
-	curves[i].topicInput.typeahead('destroy')
-
-	const filename = "data/topics/" + genre + "/allTopics.json";
-	checkFileExist(filename, () => {}, () => {
-		$.get(filename, data => {
-			curves[i].wordInput.typeahead('destroy')
-			curves[i].topicInput.typeahead({source:data});
 		},'json');
 	});
 }
@@ -185,8 +172,6 @@ function changeCurveType(i, type) {
 		curves[i].topicInput.attr("style", "display:none;");
 	}
 	else {
-		updateTopicTypeahead(i, curves[i].genre);
-
 		curves[i].topicSpan.attr("style", null);
 		curves[i].topicInput.attr("style", null);
 	}
@@ -197,13 +182,13 @@ function changeCurveType(i, type) {
 function updateCurve(i) {
 	let fileName;
 	if (curves[i].type === "word") {
-		fileName = "data/words/" + curves[i].genre + "/" + curves[i].word + ".csv";
+		fileName = "data3/words/" + curves[i].genre + "/" + curves[i].word + ".csv";
 	}
 	else if (curves[i].type === "topic") {
-		fileName = "data/topics/" + curves[i].genre + "/" + curves[i].topic + ".csv";
+		fileName = "data3/topics/" + curves[i].genre + "/" + topics.indexOf(curves[i].topic) + ".csv";
 	}
 	else {
-		fileName = "data/sentiments/" + curves[i].genre + ".csv";
+		fileName = "data3/sentiments/" + curves[i].genre + ".csv";
 	}
 
 	removePathIfAny(i);
