@@ -307,7 +307,7 @@ function checkScales() {
 }
 
 function checkFileExist(filename, onError, onSuccess) {
-	$.get("fileExist.php?file=" + filename, exists => {
+	$.get("fileExist.php?file=" + filename.replace("&", "_"), exists => {
 		if(exists) {
 			onSuccess();
 		}
