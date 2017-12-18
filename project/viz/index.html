@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div id="full-container">
-		<h1> Dear lyrics, what are you hiding ?</h1>
+        <h1> <b> Dear lyrics, what are you hiding ? </b> </h1>
 		</br>
 		<h3>19th December 2017</h3>
 		</br>
@@ -18,11 +18,8 @@
 		</br>
 		<p>Usually, people associate pop songs to light, and happy themes such as love, and metal songs to darker themes, about death. With this project, you will be able to see if this is true !</p>
 		</br>
-		<h3>Our method and data</h3>
-		<h4>Getting the data</h4>
-		</br>
-		</br>
-		<p>TODO : add samples, better describe processing, add interesting results</p>
+        <h3><b> Methodology and Data </b></h3>
+        <h4><b>Getting the data</b></h4>
 		</br>
 		</br>
 		<p>The first thing we have to do is to obtain a list of songs. We used the <a href="https://labrosa.ee.columbia.edu/millionsong/">Million Song Dataset</a> (MSD), which, as its name implies, contains the data "for a million contemporary popular music tracks". This dataset contains a lot of useful information about each song, such as its popularity, its rythm, and many more features related to audio. As we only focus on the lyrics, and not the music, we use it to get the song name, the artist name and the year. However, we are missing two very important fields for our project : the genre of the song, and its lyrics, which are not in this dataset.</p>
@@ -31,7 +28,7 @@
 		</br>
         <p>For the lyrics, the Million Song Dataset also has a <a href="https://labrosa.ee.columbia.edu/millionsong/musixmatch">specific dataset</a> which provides a Bag Of Words (BOW) for each song. A BOW only provides a counter for each word in the text, indicating how many times this word is found in this particular text, therefore it does not provide any order for the words. However, for later analysis of the lyrics, a BOW is not enough and we must have the full lyrics. Thus we must get our hands dirty and get the lyrics ourselves. We first found two other datasets which contain lyrics for some songs in our dataset, but not all of them. We thus decided to parse <a href="https://genius.com/">Genius</a>, a website which provides lyrics for thousands of songs. </p>
         <p>
-        We used <a href="https://scrapy.org/">Scrapy</a> wich crawls the pages on the website and obtains the lyrics of songs. With this method, we managed to get the lyrics for half of our songs, that is 22.000 lyrics.</p>
+        First, we generate the URLs of the songs we are looking for in the format that Genius uses. These URLs might not be a perfect match, but work in most cases. We used <a href="https://scrapy.org/">Scrapy</a>, which takes the list of URLs we generate and visits every one of them, collecting the lyrics text from the replies it gets. With this method, we managed to get the lyrics for half of our songs, that is 22.000 lyrics.</p>
 		<i>To the Genius team : if you saw a spike of traffic from Switzerland in the past few days, it was us ;)</i>
         </p>
 		</br>
@@ -40,7 +37,7 @@
 
 
 
-		<h4>Processing the data</h4>
+        <h4><b> Processing the data </b></h4>
 		</br>
 		<p>Now that we have the lyrics and the genre for each song, we can start the processing the lyrics.</p>
 		</br>
@@ -56,16 +53,16 @@
 		</br>
 		<p>Now that we decided on what to do with these non-English songs, as there is no 'language' field in the dataset, we have to detect the language based on the lyrics. For this part, we used the well-named <a href="https://pypi.python.org/pypi/langdetect?">langdetect</a> library, which uses character N-grams (which are sequences of 1, 2, 3 or more letters), to determine the language of a text. For instance the 3-gram 'ght' is far more present in English than in French, but the inverse is true for the 3-gram 'eau'.</p>
 		</br>
-		<p>As that we now have only English songs we can start the real processing, the first being the sentiment analysis !</p>
+		<p>As we now have only English songs we can start the real processing, the first being the sentiment analysis !</p>
 		</br>
-		<p>The base for sentiment analysis in any text is supervised learning : you need to have a sample of texts, labelled with a number indicating its sentiment, a lower number is a negative sentiment and a higher one is a positive sentiment. Then, with this sample and labels, you can train a classifier, using any supervised learning technique, and then use this classifier to give a sentiment score to every text you want. Luckily for us <a href="http://textblob.readthedocs.io/en/dev/">TextBlob</a>, a famous python NLP library offers both the classifier and the data to train it. After the classifier has been trained, we can simply feed it each lyric, and it will output its polarity (i.e positivity).</p>
+		<p>The base for sentiment analysis in any text is supervised learning : you need to have a sample of texts, labelled with a number indicating its sentiment, a lower number is a negative sentiment and a higher one is a positive sentiment. Then, with this sample and labels, you can train a classifier, using any supervised learning technique, and then use this classifier to give a sentiment score to every text you want. Luckily for us <a href="http://textblob.readthedocs.io/en/dev/">TextBlob</a>, a famous python NLP library offers both the classifier and the data to train it. After the classifier has been trained, we can simply feed it each lyricis, and it will output its polarity (i.e positivity).</p>
 		</br>
 
 
 		<p>The next task is word analysis, which is the easiest of the three.</p>
 		</br>
-		<p>The goal of this analysis is to get a Bag Of Words (BOW) for each lyric. One can think that this task is trivial, as it only constits of splitting the lyrics by spaces, and getting the words, but it's more complicated. The first step for this task is the tokenization of the lyrics, that is transforming them in a list of words This is done by taking into account spaces, tabs, line returns, ponctuation, etc. This is performed once again using TextBlob. </p>
-		<p>The next step is the removal of the stop words. "What is a stop word ?", you might ask : a stop word is a common word, which doesn't give very useful information, such as "I", "the", "that", etc. Even if these words can sometimes be useful, they are not for our purpose : we do not care about how often the word "the" is present in pop songs. </p>
+		<p>The goal of this analysis is to get a Bag Of Words (BOW) for each lyric. One can think that this task is trivial, as it only constits of splitting the lyrics by spaces, and getting the words, but it's more complicated. The first step for this task is the tokenization of the lyrics, that is transforming them in a list of words. This is done by taking into account spaces, tabs, line returns, ponctuation, etc. This is performed once again using TextBlob. </p>
+		<p>The next step is the removal of the stop words. A stop word is a common word, which doesn't give very useful information, such as "I", "the", "that", etc. Even if these words can sometimes be useful, they are not for our purpose : we do not care about how often the word "the" is present in pop songs. </p>
 		<p>Finally, the last step is the lemmatization. This consists of mapping each word to its "root" (also called "lemma"), by removing marks of plurals, tenses, etc. This is useful so that every instance of the same lemma will be grouped. For instance, the word "went" will be mapped to "go" and the word "elephants" will be mapped to "elephant".</p>
 		</br>
 
@@ -73,12 +70,12 @@
 		<p>The final task is topic analysis, the most complex.</p>
 		</br>
 		<p><i style="text-align: left;">First try :</i></p>
-		<p>Our first approach concerning the topic analysis was to use a Latent Dirichlet Allocation (LDA) model to get the topics. This method is unsupervised : this means that it will try, given a sample of BOW of lyrics, and the number of topics, to guess the to which topics each lyrics correspond. In this model, a topic is simply a distribution of words : for instance a topic about holidays could be : 0.1 * christmas + 0.05 * snow + 0.03 * love + 0.02 * family + ..., and a topic about hapiness would something like : 0.15 * joy + 0.1 * happy + 0.05 * love + ... Similarly, LDA assumes that each text (in our case lyrics), is built as a combination of topics. For instance, a song about happiness on holidays could be represented in this model as 0.5 * hapiness + 0.5 * holidays. Furthermore, this model does not output the name of each topic, this part is left to our human brains ;)</p>
+		<p>Our first approach concerning the topic analysis was to use a Latent Dirichlet Allocation (LDA) model to get the topics. This method is unsupervised : this means that it will try, given a sample of BOW of lyrics, and the number of topics, to guess to which topics each lyrics correspond. In this model, a topic is simply a distribution of words : for instance a topic about holidays could be : 0.1 * christmas + 0.05 * snow + 0.03 * love + 0.02 * family + ..., and a topic about hapiness would something like : 0.15 * joy + 0.1 * happy + 0.05 * love + ... Similarly, LDA assumes that each text (in our case lyrics), is built as a combination of topics. For instance, a song about happiness on holidays could be represented in this model as 0.5 * hapiness + 0.5 * holidays. Furthermore, this model does not output the name of each topic, this part is left to our human brains ;)</p>
 		<p>We used <a href="https://www.scipy.org/">SciPy</a> to train and use our LDA model, EXPLIQUER BAD RESULTS + METTRE EXEMPLE</p>
 		</br>
 		<p><i style="text-align: left;">Second try :</i></p>
-		<p>While coping with the deception about our LDA model, we looked for another method that could provide us with topics for our lyrics. After some searching we stumbled upon <a href="http://mallet.cs.umass.edu/">MALLET</a> (MAchine Learning for LanguagE Toolkit), which is a Java package that provides many tools for NLP, and topic modeling. The first 'difficulty' of using it is that, contrary to SciPy, MALLET is not a python library, thus we first had to output each lyrics to a different file, which will be processed by MALLET. As before, we removed the stop words and the first names of the lyrics to get more accurate topics, but there is an important difference between LDA and MALLET's topic modeling : MALLET is not using a BOW, and keeps the sequence of words. This is why we must have the full lyrics and not simply use the BOW provided by the Million Song Dataset. Running MALLET on our preprocessed lyrics, as in the LDA model, outputs the decomposition, of each song between each topics.</p>
-		<p>This time we got much better results, and meaningful topics, which are described in the following table. Note that MALLET only outputs the list of words, and we had to manually infer the topic name.</p>
+		<p>While coping with the deception about our LDA model, we looked for another method that could provide us with topics for our lyrics. After some searching we stumbled upon <a href="http://mallet.cs.umass.edu/">MALLET</a> (MAchine Learning for LanguagE Toolkit), which is a Java package that provides many tools for NLP, and topic modeling. The first 'difficulty' of using it is that, contrary to SciPy, MALLET is not a Python library, thus we first had to output each lyrics to a different file, which will be processed by MALLET. As before, we removed the stop words and the first names of people in the lyrics to get more accurate topics, but there is an important difference between LDA and MALLET's topic modeling : MALLET is not using a BOW, and keeps the sequence of words. This is why we must have the full lyrics and not simply use the BOW provided by the Million Song Dataset. Running MALLET on our preprocessed lyrics, as in the LDA model, outputs the decomposition, of each song between each topic.</p>
+		<p>This time we got much better results with meaningful topics, which are described in the following table. Note that MALLET only outputs the list of words, and we had to manually infer the topic name.</p>
 
 		<table class="table table-striped">
 			<tr>
@@ -171,7 +168,7 @@
 
 		</br>
 		</br>
-		<h4>Aggregating the data</h4>
+        <h4> <b> Aggregating the data </b> </h4>
 		</br>
 		<p>Once the last step were done, we had, for each song : </p>
 		<ul>
@@ -183,20 +180,20 @@
 			<li>a Bag Of Words, and</li>
 			<li>a distribution of topics</li>
 		</ul>
-		<p>As our goal is to provide the variations of the sentiment/words/topics based on the genre and year, we need to aggregate our data by genre and year. METTRE DETAILS</p>
+		<p>As our goal is to provide the variations of the sentiment/word frequency/topics based on the genre and year, we need to aggregate our data by genre and year. The precise details of this aggregation are better explained in our notebook, but essentialy we simply obtained the information we were looking for and grouped them by genre and year.</p>
 		<p>Once this was done, we output, for each genre, a .csv file that contains the variations of the sentiments, and, for each word and topic another .csv file, that contains the variation of the use of this word/topic for the genre over the years.</p>
 
 
 		</br>
 		</br>
-		<h4>Visualizing the data</h4>
+        <h4> <b> Visualizing the data </b> </h4>
 		</br>
 
 		<p>Finally, as our intent was to provide a way for everyone to explore our results, we created a simple but effective visualization of our data using <a href="https://d3js.org/">d3.js</a>, where you can select the data you want to look at and compare it with any other data in our database.</p>
 
 		</br>
 		</br>
-		<h4>Final pipeline</h4>
+        <h4> <b> Final pipeline </b> </h4>
 		</br>
 		<p>Our pipeline can be seen below : </p> 
 		</br>
@@ -205,7 +202,7 @@
 
 		</br>
 		</br>
-		<h3>Our results</h3>
+        <h3> <b> Results </b> </h3>
 		</br>
 		<p>In the following part, we will show you some results from our data.</p>
 		</br>
@@ -222,14 +219,17 @@
 		</div>
 		</br>
 		<p>With this tool, you are able to select the word or topic you want, provided it is stored in our database, and compare its trend with any other word or topic.</p>
-		<p>You can use it in full size <a href="fullViz.html">here</a>.</p>
+		<p>You can use it in full screen width <a href="fullViz.html">here</a>.</p>
 		</br>
 		</br>
-		<h3>What could be improved</h3>
+        <h3> <b> What could be improved </b> </h3>
 		</br>
 		<p>Even if we have a fully working pipeline there is still room for improvement.</p>
 		</br>
-		<p>The main issue we currently have is that there's simply not enough songs ! We started with 1.000.000 with the Million Song Dataset, which is more than enough, but by simply adding the genre with the MSD Genre dataset, this number drops to 57.000. Then, even if our method to get the lyrics works well, sometimes, the lyrics for a given song simply are not available on the web or on any dataset. We could have gotten more lyrics by using the MSD's Musixmatch dataset, but as we previously stated, this would have greatly reduced the quality of the topic modeling. Finally, we further reduced the number of songs to only keep the ones in English, which leaves us with 20.000 songs in the end.</p>
+		<p>The main issue we currently have is that there's simply not enough songs. We started with 1.000.000 with the Million Song Dataset, which is more than enough, but by simply adding the genre with the MSD Genre dataset, this number drops to 57.000. Then, even if our method to get the lyrics works well, sometimes, the lyrics for a given song simply are not available on the web or on any dataset. We could have gotten more lyrics by using the MSD's Musixmatch dataset, but as we previously stated, this would have greatly reduced the quality of the topic modeling. Finally, we further reduced the number of songs to only keep the ones in English, which leaves us with 20.000 songs in the end.</p>
+        <p>
+        Thus a future work would focus on obtaining a larget dataset containing lyrics and our pipeline would output results that are even more interesting and robust.
+        </p>
 	</div>
 
 	<div class="panel panel-default" id="curve-ui-template" style="display: none;">
