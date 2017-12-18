@@ -75,15 +75,95 @@
 		</br>
 		<p><i style="text-align: left;">Second try :</i></p>
 		<p>While coping with the deception about our LDA model, we looked for another method that could provide us with topics for our lyrics. After some searching we stumbled upon <a href="http://mallet.cs.umass.edu/">MALLET</a> (MAchine Learning for LanguagE Toolkit), which is a Java package that provides many tools for NLP, and topic modeling. The first 'difficulty' of using it is that, contrary to SciPy, MALLET is not a python library, thus we first had to output each lyrics to a different file, which will be processed by MALLET. As before, we removed the stop words and the first names of the lyrics to get more accurate topics, but there is an important difference between LDA and MALLET's topic modeling : MALLET is not using a BOW, and keeps the sequence of words. This is why we must have the full lyrics and not simply use the BOW provided by the Million Song Dataset. Running MALLET on our preprocessed lyrics, as in the LDA model, outputs the decomposition, of each song between each topics.</p>
-		<p>This time we got much better results, and meaningful topics METTRE EXEMPLE</p>
+		<p>This time we got much better results, and meaningful topics, which are described in the following table. Note that MALLET only outputs the list of words, and we had to manually infer the topic name.</p>
 
-		<table>
+		<table class="table table-striped">
+			<tr>
+				<th>Topic</th>
+				<th>List of words</th>
+			</tr>
 			<tr>
 				<td>Other</td>
-				<td></td>
+				<td> free ring set ding drop loose bomb dong jump killer cha turn mamma cut giddy agus control possibility siúil limbo</td>
+			</tr>
+			<tr>
+				<td>Break-up</td>
+				<td>heart cry leave break tear hurt lie feel make back goodbye stop pain save fall wrong die fool turn hold</td>
+			</tr>
+			<tr>
+				<td>Friendship</td>
+				<td>thing talk make people friend play good care time walk show remember call game guess smile bad face watch rea</td>
+			</tr>
+			<tr>
+				<td>Music</td>
+				<td>sing song hear heaven music play sound word shake call listen voice make world radio tune awake house guitar hum</td>
+			</tr>
+			<tr>
+				<td>Nature</td>
+				<td>river sea water wind mountain fly blow sail land tree grow green black young blue white ocean home high snow</td>
+			</tr>
+			<tr>
+				<td>Feeling</td>
+				<td>yeah feel wan ooh good tonight alright whoa make beautiful hey real baby high time feeling oooh turn show push</td>
+			</tr>
+			<tr>
+				<td>AA vernacular</td>
+				<td>dem man jah yuh woman gal babylon black gyal nuh nah yeh pon shy give hallelujah dis chorus youth agony</td>
+			</tr>
+			<tr>
+				<td>Time</td>
+				<td>time life make find world give mind live day change thing lose feel hard chorus long leave matter stay show</td>
+			</tr>
+			<tr>
+				<td>Love</td>
+				<td>hold sweet love mine kiss heart dream true make arm lover touch eye woman darling night forever blue give stay</td>
+			</tr>
+			<tr>
+				<td>Daily life</td>
+				<td>man money make hand put head work boy pay drink back big good buy gun poor eat kid woman house</td>
+			</tr>
+			<tr>
+				<td>Life/Death</td>
+				<td>life dead blood kill death end hate die soul hell mind lie human world pain control fear fuck flesh god</td>
+			</tr>
+			<tr>
+				<td>Religion</td>
+				<td>god child lord world soul people bear war mother land die brother man stand father peace men power holy fight</td>
+			</tr>
+			<tr>
+				<td>Affection</td>
+				<td>baby girl yeah bad wan make lovin doo babe thing man give bye darlin sugar hey pretty boy crazy fun</td>
+			</tr>
+			<tr>
+				<td>Transport</td>
+				<td>hey ride round city drive street car road wheel highway rid york air stop devil house place solid horse girl</td>
+			</tr>
+			<tr>
+				<td>Weather</td>
+				<td>night day light sun rain shine morning moon summer star blue christmas tonight bright shin winter dream time end bring</td>
+			</tr>
+			<tr>
+				<td>Gangsta</td>
+				<td>hot nigga fuck shit bop dog bitch real back jingle dub drop sex yall wan stuff top pop ahh bell</td>
+			</tr>
+			<tr>
+				<td>Slang</td>
+				<td>boy mama goin big lookin easy back nothin runnin comin good feelin bout livin doin walkin cryin talkin hard nice</td>
+			</tr>
+			<tr>
+				<td>Dance</td>
+				<td>dance move roll party shake ready music beat night body boogie stop rhythm wild gim groove hand floor make head</td>
+			</tr>
+			<tr>
+				<td>Dream</td>
+				<td>eye fall turn light dream feel fire burn watch face fly inside place close hear wall open stand lose run</td>
+			</tr>
+			<tr>
+				<td>Loneliness</td>
+				<td>home back long run walk time call train road wait lonely miss side leave bring day line write letter night</td>
 			</tr>
 		</table>
-
+		<i>Results of runnig MALLET on our lyrics</i> </br>
 
 
 		</br>

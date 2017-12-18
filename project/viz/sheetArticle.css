@@ -85,7 +85,7 @@ table{
   width: 100%;
 }
 
-td{
+#ui>td{
   display: inline-block
 }
 
