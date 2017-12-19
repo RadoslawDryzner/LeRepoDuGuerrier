@@ -25,8 +25,8 @@ svg {
 #full-container {
   margin-top: 25px;
   margin-bottom: 25px;
-  margin-left: 18%;
-  margin-right: 18%;
+  margin-left: 17%;
+  margin-right: 17%;
   border-radius: 5px;
   width: 66%;
   background-color: white;
@@ -73,9 +73,10 @@ p {
     font-family: 'Zilla Slab Highlight';
     font-style: normal;
     font-weight: 400;
-    font-size: 180%;
+    font-size: 185%;
     text-align: center;
     padding-top: 140px;
+
 }
 
 b {
@@ -96,7 +97,7 @@ img {
 }
 
 .small-img {
-  width: 80%;
+  width: 87%;
 }
 
 #btn-add {
