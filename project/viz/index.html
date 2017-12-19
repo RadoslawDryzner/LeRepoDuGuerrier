@@ -197,7 +197,6 @@
 		<p>As our goal is to provide the variations of the sentiment/word frequency/topics based on the genre and year, we need to aggregate our data by genre and year. The precise details of this aggregation are better explained in our notebook, but essentialy we simply obtained the information we were looking for and grouped them by genre and year.</p>
 		<p>Once this was done, we output, for each genre, a .csv file that contains the variations of the sentiments, and, for each word and topic another .csv file, that contains the variation of the use of this word/topic for the genre over the years.</p>
 
-
 		</br>
 		</br>
         <h4> <b> Visualizing the data </b> </h4>
@@ -214,32 +213,34 @@
 
 		<i>Final pipeline of our project</i>
 
+        <p> You can view our implementation of this pipeline in our notebook, found in our <a href='https://github.com/RadoslawDryzner/LeRepoDuGuerrier'> repository </a>'s project directory. 
+
 		</br>
 		</br>
         <h3> <b> Results </b> </h3>
 		</br>
 		<p> Now that we explained how we got our data, let us explore it.</p>
         <h4> <b> Words </b> </h4>
-		<p> Our visualisation allows us to explore different kinds of informations. For example, we are able to plot the frequency of words appearing in our lyrics. For example, if we were interested in looking at the frequency of the word 'heart' over time, we obtain the following plot.</p>
+        <p> Our visualisation allows us to explore different kinds of informations. For example, we are able to plot the frequency of words appearing in our lyrics. For example, if we were interested in looking at the frequency of the word <i>heart</i> over time, we obtain the following plot.</p>
 		<img src="images/death-metalVSfolk.png" class='small-img'></img>
         </br>
         <i> Frequency of the word 'heart' in lyrics over time. </i></br>
-        <p> Moreover, we can compare the frequencies of two different words on the same figure, so for example if we would like to compare the frequency of 'love' with the frequency of the word 'people', we obtain the following results.</p>
+        <p> Moreover, we can compare the frequencies of two different words on the same figure, so for example if we would like to compare the frequency of 'love' with the frequency of the word <i>people</i>, we obtain the following results.</p>
 		<img src="images/death-metalVSfolk.png" class='small-img'></img>
         </br>
 		<i> Frequencies of the words 'heart' and 'people' over time. </i> </br>
-        <p> Instead of looking at the frequencies over all lyrics, we can see the frequencies by genre. For example, if we wanted to compare the frequency of the word 'heart' in classic pop&amp;rock and soul&amp;reggae, we obtain the following plot.</p>
+        <p> Instead of looking at the frequencies over all lyrics, we can see the frequencies by genre. For example, if we wanted to compare the frequency of the word <i>heart</i> in classic pop&amp;rock and soul&amp;reggae, we obtain the following plot.</p>
 		<img src="images/death-metalVSfolk.png" class='small-img'></img>
         </br>
 		<i> Frequencies of the word 'heart' in classic pop&amp;rock and soult&amp;raegge. </i> </br>
-        <p> Using these plots, we can obtain interesting results that confirm our preconceptions about lyrical content of different genres. For example, the word 'death' is something that might not be present in large quantitites over some genres, but Metal is one genre where it's usage is expected to be high. We can verify this preconception by plotting the frequency of the word 'death' in metal and folk.</p>
+        <p> Using these plots, we can obtain interesting results that confirm our preconceptions about lyrical content of different genres. For example, the word <i>death</i> is something that might not be present in large quantitites over some genres, but Metal is one genre where it's usage is expected to be high. We can verify this preconception by plotting the frequency of the word <i>death</i> in metal and folk.</p>
 		<img src="images/death-metalVSfolk.png" class='small-img'></img>
         </br>
 		<i> Frequencies of the word 'death' in metal and folk. </i> </br>
-		<p>We can see here, with no surprise, that the word 'death' is more present is Metal songs than in Folk songs. Moreover, we can see that data for metal songs don't exists before 1984 because before the 80's, metal wasn't a very popular genre.
+        <p>We can see here, with no surprise, that the word <i>death</i> is more present is Metal songs than in Folk songs. Moreover, we can see that data for metal songs don't exists before 1984 because before the 80's, metal wasn't a very popular genre.
         </p>
 
-        <p> Other than confirming preconceptions, we can also find interesting results by plotting the frequencies for words. For example, let's take a look at the frequency of the word 'war' over all genres.</p>
+        <p> Other than confirming preconceptions, we can also find interesting results by plotting the frequencies for words. For example, let's take a look at the frequency of the word <i>war</i> over all genres.</p>
 		<img src="images/death-metalVSfolk.png" class='small-img'></img>
         </br>
 		<i> Frequency of the word 'war' over all genres. </i> </br>
@@ -247,7 +248,7 @@
         
         <h4> <b> Topics </b> </h4>
 
-        <p>Other than words, we can also look at the frequencies of different topics. We have a list of 20 topics from which we can choose. For example, the topic 'dream' has an interesting increasing frequency for the genre classic pop&amp;rock. </p>
+        <p>Other than words, we can also look at the frequencies of different topics. We have a list of 20 topics from which we can choose. For example, the topic <i>dream</i> has an interesting increasing frequency for the genre classic pop&amp;rock. </p>
 		<img src="images/death-metalVSfolk.png" class='small-img'></img>
         </br>
 		<i> Frequency of the topic 'dream' over time in classic pop&amp;rock genre. </i> </br>
@@ -257,11 +258,11 @@
         </br>
 		<i> Frequency of the topic 'AA vernacular' over time in folk and soul&amp;reggae. </i> </br>
 
-        <p>Just as for words, we can also find interesting insights in the plots. For example, we have a topic that we identified as 'Gangsta'. This topic is best represented in songs that are well known to contain gangster-like vocabulary. When looking at the plot of this topic for soul&amp;reggae, however, we see an interesting result.</p>
+        <p>Just as for words, we can also find interesting insights in the plots. For example, we have a topic that we identified as <i>Gangsta</i>. This topic is best represented in songs that are well known to contain gangster-like vocabulary. When looking at the plot of this topic for soul&amp;reggae, however, we see an interesting result.</p>
 		<img src="images/death-metalVSfolk.png" class='small-img'></img>
         </br>
 		<i> Frequency of the topic 'Gangsta' over time in soul&amp;reggae. </i> </br>
-        <p> We can see a significant increase of this topic in recent years. This shows as a change in soul and reggae songs in recent times, probably caused by the arrival of rap artists in this genre. One later example of such converstion is Calvin Cordozar Broadus, Jr., also known as Snoop Dogg or Snoop Doggy Dogg, who started doing reggae music under a new name, Snoop Lion, after a trip to Jamaica. </p>
+        <p> We can see a significant increase of this topic in recent years. This shows a change in soul and reggae songs in recent times, probably caused by the arrival of rap artists in this genre. One later example of such conversion is Calvin Cordozar Broadus, Jr., also known as Snoop Dogg or Snoop Doggy Dogg, who started doing reggae music under a new name, Snoop Lion, after a trip to Jamaica. </p>
         
         <h4> <b> Sentiments </b> </h4>
         <p> Finnaly, we can also view plots of our sentiment data. Again, comparing genres and plotting multiple curves at the same time.</p>
