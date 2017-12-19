@@ -25,10 +25,10 @@ svg {
 #full-container {
   margin-top: 25px;
   margin-bottom: 25px;
-  margin-left: 20%;
-  margin-right: 20%;
+  margin-left: 18%;
+  margin-right: 18%;
   border-radius: 5px;
-  width: 60%;
+  width: 66%;
   background-color: white;
   text-align: center;
   padding-left: 5%;
@@ -73,7 +73,9 @@ p {
     font-family: 'Zilla Slab Highlight';
     font-style: normal;
     font-weight: 400;
-    font-size:50px;
+    font-size: 180%;
+    text-align: center;
+    padding-top: 140px;
 }
 
 b {
