@@ -27,7 +27,7 @@
 		<p>The first thing we have to do is to obtain a list of songs. We used the <a href="https://labrosa.ee.columbia.edu/millionsong/">Million Song Dataset</a> (MSD), which, as its name implies, contains the data "for a million contemporary popular music tracks". This dataset contains a lot of useful information about each song, such as its popularity, its rythm, and many more features related to audio. As we only focus on the lyrics, and not the music, we use it to get the song name, the artist name and the year. However, we are missing two very important fields for our project : the genre of the song, and its lyrics, which are not in this dataset.</p>
 		</br>
 		<p>The genre of each song can be difficult to obtain as it depends on the definition of each genre, the perception of the listener and even on year of the song. Think about rock for instance : what was called <a href="https://www.youtube.com/watch?v=ZFo8-JqzSCM">rock in the 50's</a> is very different than what we call rock today. These problems, and the fact that the automatic tagging of a song is very difficult, explain why the <a href="https://labrosa.ee.columbia.edu/millionsong/blog/11-2-28-deriving-genre-dataset">Million Song Genre Dataset</a> only has 57.000 songs referenced in it. Nevertheless, we use this dataset to obtain the genres for this reduced set of songs.</p>
-        <img src="images/hist.png" class="small-img"></img> </br>
+        <img src="images/hist.png"></img> </br>
 		<i>Bar plot of the number of our songs after finding their genres. </i> </br>
 		</br>
         <p>For the lyrics, the Million Song Dataset also has a <a href="https://labrosa.ee.columbia.edu/millionsong/musixmatch">specific dataset</a> which provides a Bag Of Words (BOW) for each song. A BOW only provides a counter for each word in the text, indicating how many times this word is found in this particular text, therefore it does not provide any order for the words. However, for later analysis of the lyrics, a BOW is not enough and we must have the full lyrics. Thus we must get our hands dirty and get the lyrics ourselves. We first found two other datasets which contain lyrics for some songs in our dataset, but not all of them. We thus decided to parse <a href="https://genius.com/">Genius</a>, a website which provides lyrics for thousands of songs. </p>
@@ -35,11 +35,12 @@
         First, we generate the URLs of the songs we are looking for in the format that Genius uses. These URLs might not be a perfect match, but work in most cases. We used <a href="https://scrapy.org/">Scrapy</a>, which takes the list of URLs we generate and visits every one of them, collecting the lyrics text from the replies it gets. With this method, we managed to get the lyrics for half of our songs, that is 22.000 lyrics.</p>
 		<i>To the Genius team : if you saw a spike of traffic from Switzerland in the past few days, it was us ;)</i>
         </p>
-		</br>
-		</br>
-
+        </br>
 		<svg id="pie-svg"></svg>
-
+		<i>Distribution of lyrics source</i>
+		</br>
+		</br>
+		</br>
 
         <h4><b> Processing the data </b></h4>
 		</br>
