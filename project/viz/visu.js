@@ -51,7 +51,7 @@ let line = d3.line()
     		 .curve(d3.curveMonotoneX);
 
 let allGenres = [];
-$.get("data4/allGenres.json", function(data){
+$.get("data5/allGenres.json", function(data){
 	allGenres = data;
 },'json');
 
@@ -143,7 +143,7 @@ function addCurve() {
 function updateWordTypeahead(i, genre) {
 	curves[i].wordInput.typeahead('destroy')
 
-	const filename = "data4/words/" + genre + "/allWords.json";
+	const filename = "data5/words/" + genre + "/allWords.json";
 	checkFileExist(filename, () => {console.error("No word list for " + genre)}, () => {
 		$.get(filename, data => {
 			curves[i].wordInput.typeahead('destroy')
@@ -182,13 +182,13 @@ function changeCurveType(i, type) {
 function updateCurve(i) {
 	let fileName;
 	if (curves[i].type === "word") {
-		fileName = "data4/words/" + curves[i].genre + "/" + curves[i].word + ".csv";
+		fileName = "data5/words/" + curves[i].genre + "/" + curves[i].word + ".csv";
 	}
 	else if (curves[i].type === "topic") {
-		fileName = "data4/topics/" + curves[i].genre + "/" + topics.indexOf(curves[i].topic) + ".csv";
+		fileName = "data5/topics/" + curves[i].genre + "/" + topics.indexOf(curves[i].topic) + ".csv";
 	}
 	else {
-		fileName = "data4/sentiments/" + curves[i].genre + ".csv";
+		fileName = "data5/sentiments/" + curves[i].genre + ".csv";
 	}
 
 	removePathIfAny(i);
