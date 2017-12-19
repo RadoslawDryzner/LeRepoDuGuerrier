@@ -76,7 +76,7 @@
 		</br>
 		<p><i style="text-align: left;">First try :</i></p>
 		<p>Our first approach concerning the topic analysis was to use a Latent Dirichlet Allocation (LDA) model to get the topics. This method is unsupervised : this means that it will try, given a sample of BOW of lyrics, and the number of topics, to guess to which topics each lyrics correspond. In this model, a topic is simply a distribution of words : for instance a topic about holidays could be : 0.1 * christmas + 0.05 * snow + 0.03 * love + 0.02 * family + ..., and a topic about hapiness would something like : 0.15 * joy + 0.1 * happy + 0.05 * love + ... Similarly, LDA assumes that each text (in our case lyrics), is built as a combination of topics. For instance, a song about happiness on holidays could be represented in this model as 0.5 * hapiness + 0.5 * holidays. Furthermore, this model does not output the name of each topic, this part is left to our human brains ;)</p>
-		<p>We used <a href="https://www.scipy.org/">SciPy</a> to train and use our LDA model, but we </p>
+		<p>We used <a href="https://www.scipy.org/">SciPy</a> to train and use our LDA model, but the topics that we got were not satisfactory, with no common denominator between the output words.</p>
 		</br>
 		<p><i style="text-align: left;">Second try :</i></p>
 		<p>While coping with the deception about our LDA model, we looked for another method that could provide us with topics for our lyrics. After some searching we stumbled upon <a href="http://mallet.cs.umass.edu/">MALLET</a> (MAchine Learning for LanguagE Toolkit), which is a Java package that provides many tools for NLP, and topic modeling. The first 'difficulty' of using it is that, contrary to SciPy, MALLET is not a Python library, thus we first had to output each lyrics to a different file, which will be processed by MALLET. As before, we removed the stop words and the first names of people in the lyrics to get more accurate topics, but there is an important difference between LDA and MALLET's topic modeling : MALLET is not using a BOW, and keeps the sequence of words. This is why we must have the full lyrics and not simply use the BOW provided by the Million Song Dataset. Running MALLET on our preprocessed lyrics, as in the LDA model, outputs the decomposition, of each song between each topic.</p>
@@ -185,6 +185,10 @@
 			<li>a Bag Of Words, and</li>
 			<li>a distribution of topics</li>
 		</ul>
+
+		<img src="images/year.png"></img> </br>
+		<i>Bar plot of the number of our songs for each year. </i> </br></br>
+
 		<p>As our goal is to provide the variations of the sentiment/word frequency/topics based on the genre and year, we need to aggregate our data by genre and year. The precise details of this aggregation are better explained in our notebook, but essentialy we simply obtained the information we were looking for and grouped them by genre and year.</p>
 		<p>Once this was done, we output, for each genre, a .csv file that contains the variations of the sentiments, and, for each word and topic another .csv file, that contains the variation of the use of this word/topic for the genre over the years.</p>
 
@@ -200,10 +204,10 @@
 		</br>
         <h4> <b> Final pipeline </b> </h4>
 		</br>
-		<p>Our pipeline can be seen below : </p> 
-		</br>
-		<div class="mxgraph" style="border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;nav&quot;:true,&quot;zoom&quot;:2,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom layers lightbox&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile userAgent=\&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.91 Safari/537.36\&quot; version=\&quot;7.8.6\&quot; editor=\&quot;www.draw.io\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;0f7a5766-fae5-5fe8-e982-401f255f3d96\&quot; name=\&quot;Page-1\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
+		<div class="mxgraph" style="max-width:100%;border:1px solid transparent;" data-mxgraph="{&quot;highlight&quot;:&quot;#0000ff&quot;,&quot;lightbox&quot;:false,&quot;nav&quot;:true,&quot;resize&quot;:true,&quot;toolbar&quot;:&quot;zoom&quot;,&quot;edit&quot;:&quot;_blank&quot;,&quot;xml&quot;:&quot;&lt;mxfile userAgent=\&quot;Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.91 Safari/537.36\&quot; version=\&quot;7.8.7\&quot; editor=\&quot;www.draw.io\&quot; type=\&quot;google\&quot;&gt;&lt;diagram id=\&quot;0f7a5766-fae5-5fe8-e982-401f255f3d96\&quot; name=\&quot;Page-1\&quot;&gt;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&lt;/diagram&gt;&lt;/mxfile&gt;&quot;}"></div>
 		<script type="text/javascript" src="https://www.draw.io/js/viewer.min.js"></script>
+
+		<i>Final pipeline of our project</i>
 
 		</br>
 		</br>
@@ -211,10 +215,25 @@
 		</br>
 		<p>In the following part, we will show you some results from our data.</p>
 		</br>
+
 		<img src="images/death-metalVSfolk.png"></img>
 		<i>Frequency of the word 'death' in <span style="color:#66c2a5">Folk</span> and in <span style="color:#fc8d62">Metal</span></i> </br>
 		</br>
-		<p>We can see here, with no surprise, that the word 'death' is more present is Metal songs than in Folk songs.</p>
+		<p>We can see here, with no surprise, that the word 'death' is more present is Metal songs than in Folk songs.</p></br></br></br></br>
+
+
+		<img src="images/love-jazz&bluesVSfolk.png"></img>
+		<i>Frequency of the word 'love' in <span style="color:#66c2a5">Jazz,Blues</span> and in <span style="color:#fc8d62">Folk</span></i> </br>
+		</br>
+		<p>Again, this result shows some expected results : the word 'love' is more present is Jazz and Blues songs than in Folk songs.</p></br></br></br></br>
+
+		<p>Now, let's see some more interesting results.</p>
+		</br>
+		<img src="images/war-all.png"></img>
+		<i>Frequency of the word 'war' in <span style="color:#fc8d62">all</span> genres</span></i> </br>
+		</br>
+		<p>This result presents a spike in 1970, which corresponds to the height of the contestation of the Vietnam war.</p></br></br></br></br>
+
 		<p> In the following visualization, you will be able to see trends in the words, topics and sentiments through time for the different genres : </p>
 		<svg id="viz-svg"></svg>
 		<div id=ui class="panel-group">
@@ -223,7 +242,7 @@
 			<button class="btn btn-success" id="btn-add"><span class="glyphicon glyphicon-plus"></span> Add data</button>
 		</div>
 		</br>
-		<p>With this tool, you are able to select the word or topic you want, provided it is stored in our database, and compare its trend with any other word or topic. Note that, even if this </p>
+		<p>With this tool, you are able to select the word or topic you want, provided it is stored in our database, and compare its trend with any other word or topic.</p>
 		<p>You can use it in full screen width <a href="fullViz.html">here</a>.</p>
 		</br>
 		</br>
