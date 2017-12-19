@@ -1,5 +1,5 @@
 <?
-if (file_exists($_GET['file'])) {
+if (file_exists(str_replace("_", "&", $_GET['file']))) {
 	echo "true";
 }
 else {
