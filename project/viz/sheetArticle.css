@@ -94,7 +94,7 @@ img {
 }
 
 .small-img {
-  width: 50%;
+  width: 80%;
 }
 
 #btn-add {
@@ -140,8 +140,4 @@ table{
 
 .displayed {
   display: initial;
-}
-
-.small-img {
-  width: 50%;
 }
