@@ -36,7 +36,7 @@
 		</br>
 		</br>
 
-
+		<svg id="pie-svg"></svg>
 
 
         <h4><b> Processing the data </b></h4>
@@ -73,7 +73,7 @@
 		</br>
 		<p><i style="text-align: left;">First try :</i></p>
 		<p>Our first approach concerning the topic analysis was to use a Latent Dirichlet Allocation (LDA) model to get the topics. This method is unsupervised : this means that it will try, given a sample of BOW of lyrics, and the number of topics, to guess to which topics each lyrics correspond. In this model, a topic is simply a distribution of words : for instance a topic about holidays could be : 0.1 * christmas + 0.05 * snow + 0.03 * love + 0.02 * family + ..., and a topic about hapiness would something like : 0.15 * joy + 0.1 * happy + 0.05 * love + ... Similarly, LDA assumes that each text (in our case lyrics), is built as a combination of topics. For instance, a song about happiness on holidays could be represented in this model as 0.5 * hapiness + 0.5 * holidays. Furthermore, this model does not output the name of each topic, this part is left to our human brains ;)</p>
-		<p>We used <a href="https://www.scipy.org/">SciPy</a> to train and use our LDA model, EXPLIQUER BAD RESULTS + METTRE EXEMPLE</p>
+		<p>We used <a href="https://www.scipy.org/">SciPy</a> to train and use our LDA model, but we </p>
 		</br>
 		<p><i style="text-align: left;">Second try :</i></p>
 		<p>While coping with the deception about our LDA model, we looked for another method that could provide us with topics for our lyrics. After some searching we stumbled upon <a href="http://mallet.cs.umass.edu/">MALLET</a> (MAchine Learning for LanguagE Toolkit), which is a Java package that provides many tools for NLP, and topic modeling. The first 'difficulty' of using it is that, contrary to SciPy, MALLET is not a Python library, thus we first had to output each lyrics to a different file, which will be processed by MALLET. As before, we removed the stop words and the first names of people in the lyrics to get more accurate topics, but there is an important difference between LDA and MALLET's topic modeling : MALLET is not using a BOW, and keeps the sequence of words. This is why we must have the full lyrics and not simply use the BOW provided by the Million Song Dataset. Running MALLET on our preprocessed lyrics, as in the LDA model, outputs the decomposition, of each song between each topic.</p>
@@ -220,18 +220,28 @@
 			<button class="btn btn-success" id="btn-add"><span class="glyphicon glyphicon-plus"></span> Add data</button>
 		</div>
 		</br>
-		<p>With this tool, you are able to select the word or topic you want, provided it is stored in our database, and compare its trend with any other word or topic.</p>
+		<p>With this tool, you are able to select the word or topic you want, provided it is stored in our database, and compare its trend with any other word or topic. Note that, even if this </p>
 		<p>You can use it in full screen width <a href="fullViz.html">here</a>.</p>
+		</br>
+		</br>
+		<h3> <b> Our contributions </b> </h3>
+		</br>
+		<p>We saw a few similar projects online, but we added some unique features :</p>
+		<ul>
+			<li>An online visualization tool which provides a simple and efficient way for everyone to see the evolution and proportion of words and topics for each genre.</li>
+			<li>Multiple features for each song : sentiment, words and topics.</li>
+			<li>Multiple source for the lyrics : we try to get the lyrics from 3 different datasets.</li>
+		</ul>
 		</br>
 		</br>
         <h3> <b> What could be improved </b> </h3>
 		</br>
 		<p>Even if we have a fully working pipeline there is still room for improvement.</p>
 		</br>
-		<p>The main issue we currently have is that there's simply not enough songs. We started with 1.000.000 with the Million Song Dataset, which is more than enough, but by simply adding the genre with the MSD Genre dataset, this number drops to 57.000. Then, even if our method to get the lyrics works well, sometimes, the lyrics for a given song simply are not available on the web or on any dataset. We could have gotten more lyrics by using the MSD's Musixmatch dataset, but as we previously stated, this would have greatly reduced the quality of the topic modeling. Finally, we further reduced the number of songs to only keep the ones in English, which leaves us with 20.000 songs in the end.</p>
-        <p>
-        Thus a future work would focus on obtaining a larget dataset containing lyrics and our pipeline would output results that are even more interesting and robust.
-        </p>
+		<p>The main issue we currently have is that there's simply not enough songs. We started with 1.000.000 with the Million Song Dataset, which is more than enough, but by simply adding the genre with the MSD Genre dataset, this number drops to 57.000. Then, even if our method to get the lyrics works well, sometimes, the lyrics for a given song simply are not available on the web or on any dataset. We could have gotten more lyrics by using the MSD's Musixmatch dataset, but as we previously stated, this would have greatly reduced the quality of the topic modeling. Finally, we further reduced the number of songs to only keep the ones in English, which leaves us with 17.564 songs in the end.</p>
+        <p>Thus a future work would focus on obtaining a larger dataset containing lyrics and our pipeline would output results that are even more interesting and robust.</p>
+        </br>
+        <p>Another small problem is the genre skew : there is 500 times more classic pop and rock songs than hip-hop songs in the MSD genre dataset, which can lead to less accurate results for some genre.</p>
 	</div>
 
 	<div class="panel panel-default" id="curve-ui-template" style="display: none;">
@@ -267,6 +277,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="bootstrap3-typeahead.min.js"></script>
+	<script src="pie.js"></script>
 	<script src="visu.js"></script>
 </body>
 </html>

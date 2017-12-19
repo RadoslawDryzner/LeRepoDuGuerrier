@@ -52,6 +52,10 @@ img {
   width: 100%;
 }
 
+.small-img {
+  width: 50%;
+}
+
 #btn-add {
   margin: 10px;
 }
