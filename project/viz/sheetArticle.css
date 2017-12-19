@@ -3,7 +3,9 @@ html, body {
   height: 100%;
   padding: 0;
   margin: 0;
-  background-color: white
+  background-color: white;
+  font-family: 'Zilla Slab', serif;
+
 }
 
 svg {
@@ -45,14 +47,46 @@ svg {
   overflow-y: auto;
 }
 
-p {
-  font-size: 17px;
-  text-align: left;
+td{
+    font-size: 18px;
+    text-align: left;
+    font-family: 'Zilla Slab', serif;
 }
 
-ul, li {
-  font-size: 17px;
+td:nth-child(1) {  
+    font-weight: bold; 
+    font-size: 16px;
+}
+
+tr:nth-child(1) {  
+    font-size: 24px;
+}
+
+p {
+  font-size: 20px;
   text-align: left;
+  font-family: 'Zilla Slab', serif;
+
+}
+
+#title{
+    font-family: 'Zilla Slab Highlight';
+    font-style: normal;
+    font-weight: 400;
+    font-size:50px;
+}
+
+b {
+    font-family: 'Zilla Slab', serif;
+    font-size:40px;
+
+}
+
+
+ul, li {
+  font-size: 20px;
+  text-align: left;
+  font-family: 'Zilla Slab', serif;
 }
 
 img {
@@ -60,7 +94,7 @@ img {
 }
 
 .small-img {
-  width: 50%;
+  width: 80%;
 }
 
 #btn-add {
@@ -106,8 +140,4 @@ table{
 
 .displayed {
   display: initial;
-}
-
-.small-img {
-  width: 50%;
 }
