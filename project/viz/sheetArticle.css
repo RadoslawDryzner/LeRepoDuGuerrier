@@ -100,3 +100,7 @@ table{
 .displayed {
   display: initial;
 }
+
+.small-img {
+  width: 50%;
+}
